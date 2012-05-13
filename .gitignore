@@ -1,1 +1,4 @@
 *.pyc
+*.egg/
+signatures/
+mast.egg-info/
