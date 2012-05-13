@@ -36,7 +36,25 @@
                 <input type="text" id="q" name="q" value="" />
                 <input type="submit" id="x" value="Go" />
             </form>
-            ${geoip}
+            <div>${geoip}</div>
+            <div>Lat: <input type="text" disabled="disabled" id="lat"/></div>
+            <div>Long: <input type="text" disabled="disabled" id="long"/></div>
+            <script>
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(pos) {
+                        var lat = pos.coords.latitude;
+                        var lon = pos.coords.longitude;
+                        var latin = document.getElementById('lat');
+                        var longin = document.getElementById('long');
+                        latin.value = lat;
+                        longin.value = lon;
+                    }, function() {
+                        alert('<div>Browser location not available</div>');
+                    });
+                } else {
+                    alert('<div>Browser does not support geolocation</div>');
+                }
+            </script>
         </div>
         <div id="right" class="align-left">
           <h2>Pyramid links</h2>
