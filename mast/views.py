@@ -33,6 +33,11 @@ def post_signature(request):
         'b64': b64
     }
     request.db.signatures.insert(entry)
+    # write it out to a file as backup
+    fname = str(entry['_id'])+'.png'
+    img = open('signatures/'+fname,'wb')
+    img.write(b64.decode('base64'))
+    img.close()
     return json_ok(entry)
     
 @view_config(route_name='postApp', renderer='jsonp', request_method='POST')

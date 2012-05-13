@@ -43,7 +43,6 @@ class AppTests(unittest.TestCase):
         self.assertEquals(res['status'],'OK')
         sigjf = open('mast/test.signpad')
         sigj = sigjf.read()
-        print sigj
         sigjf.close()
         req = getRequest(matchdict=None,params=dict(output=sigj,res='yes',par='no',tea='no',fn='Full Name',a1='Address Line 1',a2='Address Line 2',z='19056'),post=True)
         res = post_signature(req)
