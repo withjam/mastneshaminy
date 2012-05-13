@@ -10,7 +10,7 @@ def json_ok(data=None):
 """ WWW Handlers """
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
 def my_view(request):
-    return {'project':'mast'}
+    return {'project':'mast','geoip':request.geoip,'ip':request.remote_addr}
     
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
