@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+    <title>Neshaminy Charter Info</title>
+    <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
+    
+</head>
+<body>
+<div id="header">
+    <div class="wrapper">
+        <a href="/" id="logo-main"></a>
+    </div>
+</div>
+<div id="body">
+    <div class="wrapper">
+        <div id="area-main">
+            <metal:content define-slot="content"/>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="wrapper">
+        <span class="logo">&nbsp;</span>
+    </div>
+</div>
+<!--[if lt IE 9]><script src="http://static.thomasjbradley.ca/signature-pad/flashcanvas.js"></script><![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/static/js/jquery.signaturepad.min.js"></script>
+</body>
+</html>

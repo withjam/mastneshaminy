@@ -1,0 +1,12 @@
+<metal:main use-macro="load: global.pt">
+<div class="content" metal:fill-slot="content">
+    <aside class="aside">
+        <div class="module" id="adspace1">
+            Left Side
+        </div>
+    </aside>
+    <section class="main home">
+        <h1>Bring MaST Charter System to Neshaminy!</h1>
+    </section>
+</div>
+</metal:main>

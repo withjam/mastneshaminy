@@ -12,6 +12,10 @@ def json_ok(data=None):
 def my_view(request):
     return {'project':'mast','geoip':request.geoip,'ip':request.remote_addr}
     
+@view_config(route_name='realhome', renderer='templates/home.pt')
+def web_home(request):
+    return {'geoip': request.geoip}
+    
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):

@@ -22,6 +22,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age=3600)
     # Web Routes
     config.add_route('home', '/')
+    config.add_route('realhome', '/home')
     # API Routes
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')
