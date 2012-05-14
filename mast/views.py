@@ -28,7 +28,8 @@ def petition_thanks(request):
     from pyramid.httpexceptions import HTTPFound
     entry = post_signature(request)
     if entry['status'] == 'OK':
-        return HTTPFound(location='/signature/'+str(entry['_id'])+'.png')
+        eid = entry['data']['_id']
+        return HTTPFound(location='/signature/'+str(eid)+'.png')
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('petition'))
     
@@ -51,12 +52,12 @@ def post_signature(request):
         return json_error('Signature is required')
     entry = {
         'fn': request.params['fn'],
-        'par': request.params['par'] == 'yes',
-        'res': request.params['res'] == 'yes',
-        'tea': request.params['tea'] == 'yes',
-        'a': request.params['a'],
+        'par': request.params['par'] == 'yes' if 'par' in request.params else False,
+        'res': request.params['res'] == 'yes' if 'res' in request.params else False,
+        'tea': request.params['tea'] == 'yes' if 'tea' in request.params else False,
+        'a': request.params['a'] if 'a' in request.params else None,
         'em': request.params['em'] if 'em' in request.params else None,
-        'z': request.params['z'],
+        'z': request.params['z'] if 'par' in request.params else None,
         'b64': b64
     }
     request.db.signatures.insert(entry)

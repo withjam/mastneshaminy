@@ -2,12 +2,9 @@
 <div class="content" metal:fill-slot="content">
     <section class="main home">
         <h1>Sign the Petition</h1>
-        <ul class="error" tal:condition="messages" tal:repeat="msg messages">
-            <li tal:content="msg"></li>
-        </ul>
         <form method="POST" action="/petition" class="petitionForm">
           <label for="name">Full Name</label>
-          <input type="text" name="name" id="name" class="name">
+          <input type="text" name="fn" id="name" class="name">
           <p class="drawItDesc">Draw your signature</p>
           <ul class="sigNav">
             <li class="drawIt"><a href="#draw-it">Draw It</a></li>
@@ -15,14 +12,14 @@
           </ul>
           <div class="sig sigWrapper">
             <div class="typed"></div>
-            <canvas class="pad" width="300" height="55"></canvas>
+            <canvas class="pad" width="350" height="80"></canvas>
             <input type="hidden" name="output" class="output">
           </div>
           <button type="submit">I accept the terms of this agreement.</button>
         </form>
     </section>
     <script type="text/javascript">
-        jQuery(function($) { $('FORM.petitionForm').signaturePad({penColour:'#000',drawOnly:true}); });
+        jQuery(function($) { $('FORM.petitionForm').signaturePad({lineTop:60,penWidth:3,penColour:'#000',drawOnly:true}); });
     </script>
 </div>
 </metal:main>

@@ -11,6 +11,9 @@
         <a href="/" id="logo-main"></a>
     </div>
 </div>
+<ul class="error" tal:condition="messages" tal:repeat="msg messages">
+    <li tal:content="msg"></li>
+</ul>
 <div id="body">
     <div class="wrapper">
         <div id="area-main">
