@@ -2,8 +2,11 @@
 <div class="content" metal:fill-slot="content">
     <section class="main home">
         <h1>Sign the Petition</h1>
+        <ul class="error" tal:condition="messages" tal:repeat="msg messages">
+            <li tal:content="msg"></li>
+        </ul>
         <form method="POST" action="/petition" class="petitionForm">
-          <label for="name">Print your name</label>
+          <label for="name">Full Name</label>
           <input type="text" name="name" id="name" class="name">
           <p class="drawItDesc">Draw your signature</p>
           <ul class="sigNav">

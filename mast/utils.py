@@ -1,8 +1,21 @@
 import random
+import os
 import hashlib
 import StringIO
 from base64 import b64encode
 from signpad2image import s2i
+
+_here = os.path.dirname(__file__)
+
+def get_sign_path(name):
+    path = os.path.join(_here, 'signatures', name+'.png')
+    return path
+
+# _icon = /app/location/myapp/static/favicon.ico
+def read_sign(name):
+    sign = open(os.path.join(
+             _here, 'signatures', name+'.png')).read()
+    return sign
 
 def pencrypt(pwd):
     salt = ''.join(random.choice('bcdefghijklmnopqrstvwxyz0123456789') for i in range(6))

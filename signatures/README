@@ -1,2 +1,0 @@
-Mongo documents in the signatures collection will contain a b64 attribute that is the image in base64.
-The images will also be stored here as a backup and also to allow for the removal of them in Mongo if size becomes an issue

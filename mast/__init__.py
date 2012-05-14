@@ -1,6 +1,7 @@
 from pyramid.config import Configurator
 from pyramid.events import subscriber
 from pyramid.events import NewRequest
+from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.renderers import JSONP
 import pymongo
 import pygeoip
@@ -10,7 +11,8 @@ from bson import json_util
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
-    config = Configurator(settings=settings)
+    my_session_factory = UnencryptedCookieSessionFactoryConfig('neshmast')
+    config = Configurator(settings=settings,session_factory = my_session_factory)
     db_uri = settings['db_uri']
     conn = pymongo.Connection(db_uri)
     config.add_renderer('jsonp', JSONP(param_name='jsonp'))
@@ -24,6 +26,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('realhome', '/home')
     config.add_route('petition', '/petition')
+    config.add_route('viewsign', '/signature/{filename}.png')
     # API Routes
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')

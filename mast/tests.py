@@ -30,7 +30,7 @@ class AppTests(unittest.TestCase):
 
     def test_post_signature(self):
         from .views import post_signature
-        req = getRequest(matchdict=None,params=dict(res='yes',par='no',tea='no',fn='Full Name',a1='Address Line 1',a2='Address Line 2',z='19056'),post=True)
+        req = getRequest(matchdict=None,params=dict(res='yes',par='no',tea='no',fn='Full Name',a='Address',z='19056'),post=True)
         res = post_signature(req)
         self.assertIn('status',res)
         self.assertEquals(res['status'],'Error')
@@ -38,13 +38,13 @@ class AppTests(unittest.TestCase):
         sig64f = open('mast/test.b64')
         sig64 = sig64f.read()
         sig64f.close()
-        req = getRequest(matchdict=None,params=dict(b64=sig64,res='yes',par='no',tea='no',fn='Full Name',a1='Address Line 1',a2='Address Line 2',z='19056'),post=True)
+        req = getRequest(matchdict=None,params=dict(b64=sig64,res='yes',par='no',tea='no',fn='Full Name',a='Address',em='email',z='19056'),post=True)
         res = post_signature(req)
         self.assertEquals(res['status'],'OK')
         sigjf = open('mast/test.signpad')
         sigj = sigjf.read()
         sigjf.close()
-        req = getRequest(matchdict=None,params=dict(output=sigj,res='yes',par='no',tea='no',fn='Full Name',a1='Address Line 1',a2='Address Line 2',z='19056'),post=True)
+        req = getRequest(matchdict=None,params=dict(output=sigj,res='yes',par='no',tea='no',fn='Full Name',a='Address Line 1',em='email',z='19056'),post=True)
         res = post_signature(req)
         self.assertEquals(res['status'],'OK')
         
