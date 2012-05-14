@@ -10,17 +10,6 @@
  *  @license New BSD License
  */
 
-@font-face {
-  font-family: 'Journal';
-  src: url('journal.eot');
-  src: url('journal.eot?#iefix') format('embedded-opentype'),
-       url('journal.woff') format('woff'),
-       url('journal.ttf') format('truetype'),
-       url('journal.svg#JournalRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .sigPad {
   margin: 0;
   padding: 0;
@@ -190,7 +179,7 @@
   cursor: default;
 
   color: #145394;
-  font: normal 1.875em/50px "Journal",Georgia,Times,serif;
+  font: normal 1.875em/50px Georgia,Times,serif;
 }
 
 .typeItDesc,

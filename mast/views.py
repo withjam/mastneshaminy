@@ -16,6 +16,14 @@ def my_view(request):
 def web_home(request):
     return {'geoip': request.geoip}
     
+@view_config(route_name='petition', renderer='templates/petition.pt', request_method='GET')
+def petition_form(request):
+    return {'title': 'Sign the Petition'}
+    
+@view_config(route_name='petition', request_method='POST')
+def petition_thanks(request):
+    return {}
+    
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):

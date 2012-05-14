@@ -23,6 +23,7 @@ def main(global_config, **settings):
     # Web Routes
     config.add_route('home', '/')
     config.add_route('realhome', '/home')
+    config.add_route('petition', '/petition')
     # API Routes
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')
