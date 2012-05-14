@@ -12,14 +12,14 @@
           </ul>
           <div class="sig sigWrapper">
             <div class="typed"></div>
-            <canvas class="pad" width="350" height="80"></canvas>
+            <canvas class="pad" width="198" height="55"></canvas>
             <input type="hidden" name="output" class="output">
           </div>
           <button type="submit">I accept the terms of this agreement.</button>
         </form>
     </section>
     <script type="text/javascript">
-        jQuery(function($) { $('FORM.petitionForm').signaturePad({lineTop:60,penWidth:3,penColour:'#000',drawOnly:true}); });
+        jQuery(function($) { $('FORM.petitionForm').signaturePad({penColour:'#000',drawOnly:true}); });
     </script>
 </div>
 </metal:main>
