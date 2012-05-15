@@ -4,6 +4,9 @@
     <title>Neshaminy Charter Info</title>
     <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="http://static.thomasjbradley.ca/signature-pad/flashcanvas.js"></script><![endif]-->
+    <script src="/static/js/jquery.signaturepad.min.js"></script>
+    <script src="/static/js/nci.js"></script>
 </head>
 <body>
 <div id="header">
@@ -26,7 +29,5 @@
         <span class="logo">&nbsp;</span>
     </div>
 </div>
-<!--[if lt IE 9]><script src="http://static.thomasjbradley.ca/signature-pad/flashcanvas.js"></script><![endif]-->
-<script src="/static/js/jquery.signaturepad.min.js"></script>
 </body>
 </html>

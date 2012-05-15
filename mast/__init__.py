@@ -31,6 +31,7 @@ def main(global_config, **settings):
     config.add_route('realhome', '/home')
     config.add_route('petition', '/petition')
     config.add_route('viewsign', '/signature/{filename}.png')
+    config.add_route('enroll', '/enroll')
     # API Routes
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')

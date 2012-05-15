@@ -10,6 +10,17 @@ def json_error(msg=None):
     
 def json_ok(data=None):
     return {'status':'OK','data':data}
+    
+def add_utc():
+    return datetime.utcnow()
+
+def add_geo(request):
+    lat = float(request.params['lat']) if 'lat' in request.params else 0
+    lon = float(request.params['lon']) if 'lon' in request.params else 0
+    if 'jkjkgeoip' in request:
+        lat = request.geoip['latitiude'] if lat is 0 else lat
+        lon = request.geoip['longitutde'] if lon is 0 else lon
+    return [lat,lon]
 
 """ WWW Handlers """
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
@@ -41,6 +52,10 @@ def view_signature(request):
                         body=sign)
     return file_response
     
+@view_config(route_name='enroll', renderer='templates/enroll.pt', request_method='GET')
+def enroll_form(request):
+    return {'title': 'Pre-Enroll in Neshaminy MaST Charter School', 'messages': request.session.pop_flash()}
+    
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):
@@ -59,7 +74,8 @@ def post_signature(request):
         'a': request.params['a'] if 'a' in request.params else None,
         'em': request.params['em'] if 'em' in request.params else None,
         'z': request.params['z'] if 'par' in request.params else None,
-        'utc': datetime.utcnow(),
+        'utc': add_utc(),
+        'geo': add_geo(request),
         'b64': b64
     }
     request.db.signatures.insert(entry)
@@ -103,7 +119,8 @@ def post_application(request):
         'a2': request.params['a2'] if 'a2' in request.params else None,
         'z': request.params['z'],
         'c': children,
-        'utc': datetime.utcnow(),
+        'geo': add_geo(request),
+        'utc': add_utc()
     }
     request.db.applicants.insert(data)
     return json_ok(data)
