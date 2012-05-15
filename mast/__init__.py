@@ -14,7 +14,11 @@ def main(global_config, **settings):
     my_session_factory = UnencryptedCookieSessionFactoryConfig('neshmast')
     config = Configurator(settings=settings,session_factory = my_session_factory)
     db_uri = settings['db_uri']
-    conn = pymongo.Connection(db_uri)
+    conn = pymongo.Connection(db_uri,tz_aware=True)
+    db = conn[settings['db_name']]
+    if ('db_user' in settings):
+        db.authenticate(settings['db_user'],settings['db_pass'])
+    config.registry.db = db
     config.add_renderer('jsonp', JSONP(param_name='jsonp'))
     config.registry.settings['db_conn'] = conn
     config.add_subscriber(add_mongo_db, NewRequest)
@@ -34,12 +38,8 @@ def main(global_config, **settings):
     return config.make_wsgi_app()
     
 def add_mongo_db(event):
-    settings = event.request.registry.settings
-    db = settings['db_conn'][settings['db_name']]
-    if ('db_user' in settings):
-        db.authenticate(settings['db_user'],settings['db_pass'])
+    db = event.request.registry.db
     event.request.db = db
-    
 def add_geoip(event):
     gi = event.request.registry.settings['pygeo']
     ip = event.request.remote_addr

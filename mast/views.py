@@ -1,3 +1,4 @@
+from datetime import datetime
 from pyramid.view import view_config
 from pyramid.response import Response
 from utils import read_sign
@@ -58,6 +59,7 @@ def post_signature(request):
         'a': request.params['a'] if 'a' in request.params else None,
         'em': request.params['em'] if 'em' in request.params else None,
         'z': request.params['z'] if 'par' in request.params else None,
+        'utc': datetime.utcnow(),
         'b64': b64
     }
     request.db.signatures.insert(entry)
@@ -100,7 +102,8 @@ def post_application(request):
         'a1': request.params['a1'],
         'a2': request.params['a2'] if 'a2' in request.params else None,
         'z': request.params['z'],
-        'c': children
+        'c': children,
+        'utc': datetime.utcnow(),
     }
     request.db.applicants.insert(data)
     return json_ok(data)

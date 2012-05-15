@@ -87,19 +87,18 @@
   padding: 0;
 }
 
-.sigNav a,
-.sigNav a:link,
-.sigNav a:visited {
-  display: block;
+.buttons a,
+.buttons a:link,
+.buttons a:visited {
   margin: 0;
   padding: 0 0.6em;
-
-  border: 0;
-
   color: #333;
   font-weight: bold;
   line-height: 2.25em;
   text-decoration: underline;
+}
+.buttons button {
+    float: right;
 }
 
 .sigNav a.current,
@@ -124,12 +123,7 @@
   color: #555;
 }
 
-.sigNav .clearButton {
-  bottom: 0.2em;
-  display: none;
-  position: absolute;
-  right: 0;
-
+.clearButton {
   font-size: 0.75em;
   line-height: 1.375;
 }
@@ -137,7 +131,6 @@
 .sigWrapper {
   clear: both;
   height: 75px;
-
   border: 1px solid #ccc;
 }
 
