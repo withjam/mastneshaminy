@@ -52,8 +52,8 @@ def view_signature(request):
                         body=sign)
     return file_response
     
-@view_config(route_name='enroll', renderer='templates/enroll.pt', request_method='GET')
-def enroll_form(request):
+@view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
+def apply_form(request):
     return {'title': 'Pre-Enroll in Neshaminy MaST Charter School', 'messages': request.session.pop_flash()}
     
 """ API Handlers """
