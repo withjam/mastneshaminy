@@ -50,23 +50,26 @@
         frm.bind('submit',function() { prepGrids(grids); });
     };
     var prepGrids = function(grids) {
-        var i = 1;
         jQuery.each(grids, function() {
             var g = $(this);
-            g.find('.item :visible[name]').dynaAttr('name',i);
-            i++;
+            var rows = g.find('.gridrow');
+            var i = 1;
+            jQuery.each(rows,function() {
+                $(this).find(':visible[name]').dynaAttr('name',i);
+                i++;
+            });
         });
     };
     /**
      *  Function add a grid item to a grid based on the template
      **/
     var addGridItem = function(tpl,grid) {
-        var rows = grid.find('.item').length;
+        var rows = grid.find('.gridrow').length;
         var n = rows + 1;
         var item = tpl.clone();
         var cnt = grid.find(':hidden.gridcount');
         cnt.val(n);
-        item.removeClass('template').addClass('item item'+n);
+        item.removeClass('template').addClass('gridrow gridrow'+n);
         item.find('.del').click(function() { item.remove(); cnt.val(rows-1);});
         item.find('input[hint]').hinted();
         grid.append(item);

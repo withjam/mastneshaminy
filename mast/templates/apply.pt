@@ -37,7 +37,7 @@ MaST Community Charter School Model in Neshaminy School District.</h2>
                     </tr>
                     <tr class="template">
                         <td class="name"><input type="text" hint="Child's name" name="c{#}n" class="name"/></td>
-                        <td class="grade"><select name="c{#}g" class="grade"></select></td>
+                        <td class="grade"><select name="c{#}g" class="grade"><option value="0">Grade K</option><option value="1">1st</option><option value="2">2nd</option><option value="3">3rd</option><option value="4">4th</option><option value="5">5th</option><option value="6">6th</option><option value="7">7th</option><option value="8">8th</option><option value="9">9th</option><option value="10">10th</option><option value="11">11th</option><option value="12">12th</option></select></td>
                         <td class="gender"><select name="c{#}s" class="gender"><option value="m">Boy</option><option value="f">Girl</option></select></td>
                         <td class="dob"><input type="text" hint="Birthday" name="c{#}b" class="dob" /></td>
                         <td class="del"><a class="del icon"></a></td>
