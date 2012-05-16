@@ -1,6 +1,7 @@
 from datetime import datetime
 from pyramid.view import view_config
 from pyramid.response import Response
+from pyramid.httpexceptions import HTTPFound
 from utils import read_sign
 from utils import sig2b64
 from utils import get_sign_path
@@ -21,6 +22,15 @@ def add_geo(request):
         lat = request.geoip['latitiude'] if lat is 0 else lat
         lon = request.geoip['longitutde'] if lon is 0 else lon
     return [lat,lon]
+    
+def missing(prop,obj):
+    val = obj[prop] if prop in obj else None
+    if val is not None and len(val.strip()) > 0:
+        return False
+    return True
+    
+def missingparam(prop,req):
+    return missing(prop,req.params)
 
 """ WWW Handlers """
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
@@ -37,7 +47,6 @@ def petition_form(request):
     
 @view_config(route_name='petition', request_method='POST')
 def petition_thanks(request):
-    from pyramid.httpexceptions import HTTPFound
     entry = post_signature(request)
     if entry['status'] == 'OK':
         eid = entry['data']['_id']
@@ -55,6 +64,14 @@ def view_signature(request):
 @view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
 def apply_form(request):
     return {'title': 'Pre-Enroll in Neshaminy MaST Charter School', 'messages': request.session.pop_flash()}
+    
+@view_config(route_name='apply', request_method='POST')
+def post_apply_form(request):
+    entry = post_application(request)
+    if entry['status'] == 'OK':
+        return HTTPFound(location='/apply/thanks')
+    request.session.flash(entry['msg'])
+    return HTTPFound(location=request.route_url('apply'))
     
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
@@ -89,15 +106,15 @@ def post_signature(request):
 @view_config(route_name='postApp', renderer='jsonp', request_method='POST')
 def post_application(request):
     errors = []
-    if 'ln' not in request.params or 'fn' not in request.params:
+    if missingparam('fn',request):
         errors.append('Parent/Guardian Name required')
-    if 'em' not in request.params:
+    if missingparam('em',request):
         errors.append('Email is required')
-    if 'a1' not in request.params:
+    if missingparam('a1',request):
         errors.append('Address is required')
-    if 'z' not in request.params:
+    if missingparam('z',request):
         errors.append('Zip code is required')
-    if 'children' is '0':
+    if request.params['children'] == '0':
         errors.append('At least one child is required')
     if len(errors) > 0:
         return json_error(errors)
@@ -112,11 +129,10 @@ def post_application(request):
         }
         children.append(child)
     data = {
-        'ln': request.params['ln'],
         'fn': request.params['fn'],
         'em': request.params['em'],
         'a1': request.params['a1'],
-        'a2': request.params['a2'] if 'a2' in request.params else None,
+        'a2': request.params['a2'] if not missingparam('a2',request) else None,
         'z': request.params['z'],
         'c': children,
         'geo': add_geo(request),

@@ -4,7 +4,7 @@
 
 input.hinted { color: #666; }
 TD, TH { padding: 0;margin: 0;font-weight:normal;font-size:1em;}
-table.inputgrid { border-collapse: collapse;padding:0; }
+table.inputgrid { border-collapse: collapse;padding:0;width:100% }
 .inputgrid .template { display: none; }
 .inputgrid .add, .inputgrid .del { cursor: pointer; }
 

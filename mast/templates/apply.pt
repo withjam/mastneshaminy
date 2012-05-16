@@ -5,7 +5,7 @@
         <h2 class="statement">Please complete the entire application in order to express your interest in a 
 MaST Community Charter School Model in Neshaminy School District.</h2>
         <div class="petition" style="width:310px">
-            <form method="POST" action="/petition" class="applyForm">
+            <form method="POST" action="/apply" class="applyForm">
                 <input type="hidden" name="lat" value="0"/>
                 <input type="hidden" name="lon" value="0"/>
                 <div class="field">
@@ -13,12 +13,8 @@ MaST Community Charter School Model in Neshaminy School District.</h2>
                     <input type="checkbox" name="res" id="res" value="yes"/>
                 </div>
                 <div class="field">
-                    <label for="name">Parent/Guardian First Name</label>
+                    <label for="name">Parent/Guardian Name</label>
                     <input type="text" name="fn" id="name" class="name"/>
-                </div>
-                <div class="field">
-                    <label for="name">Parent/Guardian Last Name</label>
-                    <input type="text" name="ln" id="name" class="name"/>
                 </div>
                 <div class="field">
                     <label for="email">Family Email</label>
