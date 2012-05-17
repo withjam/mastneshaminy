@@ -1,3 +1,260 @@
+/*
+*
+*  Consistency fixes
+*  adopted from http://necolas.github.com/normalize.css/
+*
+*/
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  min-height: 100%;
+  font-size: 100%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+audio,
+canvas,
+video {
+  display: block;
+}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+b, strong {
+  font-weight: bold;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+input,
+textarea,
+button,
+select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="checkbox"], input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+textarea {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*
+*
+*  Simple fluid media
+*
+*/
+figure {
+  position: relative;
+}
+figure img,
+figure object,
+figure embed,
+figure video {
+  max-width: 100%;
+  display: block;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+/*
+*
+*  Simple elastic gutters
+*  Note: box-sizing will not work in IE6-8
+*
+*/
+.wrapper {
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*
+*
+*	Zoomable baseline grid
+*	type size presets
+*
+*/
+body {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.small,
+small,
+code,
+#copyright p {
+  font-size: 0.8125em;
+  line-height: 1.3846153846153846em;
+}
+.normal, h4, h3 {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.large, h2, h1 {
+  font-size: 1.625em;
+  line-height: 1.3846153846153846em;
+}
+.huge {
+  font-size: 2.625em;
+  line-height: 1.1428571428571428em;
+}
+.massive {
+  font-size: 4.25em;
+  line-height: 1.0588235294117647em;
+}
+.gigantic {
+  font-size: 6.875em;
+  line-height: 1.0909090909090908em;
+}
+/*
+*
+*	Typography
+*
+*/
+body,
+input,
+textarea,
+button,
+select {
+  font-family: ff-dagny-web-pro, sans-serif;
+}
+pre, code {
+  font-family: Menlo, Monaco, monospace;
+}
+article p, #content figure, #content header p {
+  margin-bottom: 1.5em;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+article p:last-child {
+  margin-bottom: 0;
+}
+#content header p {
+  padding-bottom: 1.4375em;
+  border-bottom: 0.0625em dotted #3d3c38;
+  margin: 0;
+}
+h2 {
+  margin-bottom: 0.46153846153846156em;
+}
+h3 {
+  margin: 3em 0 1.5em;
+}
+#download h3, #guide h3 {
+  margin: 1.5em 0 0;
+}
+#colophon h3 {
+  border-bottom: 0.0625em dotted #9e9c95;
+  margin: 0 0 0.6875em;
+}
+/*
+*
+*	Colours
+*
+*/
+h1,
+h2,
+h3,
+strong,
+code {
+  color: #171409;
+}
+#colophon {
+  color: #9e9c95;
+}
+#follow p, #colophon h3 {
+  color: #fffefa;
+}
+a {
+  text-decoration: none;
+  color: #171409;
+  border-bottom: 0.125em solid #ffc300;
+}
+#colophon a {
+  color: #ffc300;
+  border-bottom-color: transparent;
+}
+a:hover {
+  border-bottom-color: #171409;
+}
+#colophon a:hover {
+  border-bottom-color: #ffc300;
+}
+a:active {
+  border-bottom-color: #ffc300;
+  color: #ffc300;
+}
+#colophon a:active {
+  border-bottom-color: #fffefa;
+  color: #fffefa;
+}
+::selection {
+  background: #ffc300;
+  color: #171409;
+}
+::-moz-selection {
+  background: #ffc300;
+  color: #171409;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+body {
+  -webkit-tap-highlight-color: #ffc300;
+}
+
+#masthead .logo { background: url('../images/neshaminy-mast.png') no-repeat left center;width:185px;height:100px;display:block; }
+#masthead .logo h1 { display: none; }
+
 .icon { background-position:left;background-repeat:no-repeat;padding:3px 0 3px 19px; }
 .icon.del { background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJdSURBVDjLpZP7S1NhGMf9W7YfogSJboSEUVCY8zJ31trcps6zTI9bLGJpjp1hmkGNxVz4Q6ildtXKXzJNbJRaRmrXoeWx8tJOTWptnrNryre5YCYuI3rh+8vL+/m8PA/PkwIg5X+y5mJWrxfOUBXm91QZM6UluUmthntHqplxUml2lciF6wrmdHriI0Wx3xw2hAediLwZRWRkCPzdDswaSvGqkGCfq8VEUsEyPF1O8Qu3O7A09RbRvjuIttsRbT6HHzebsDjcB4/JgFFlNv9MnkmsEszodIIY7Oaut2OJcSF68Qx8dgv8tmqEL1gQaaARtp5A+N4NzB0lMXxon/uxbI8gIYjB9HytGYuusfiPIQcN71kjgnW6VeFOkgh3XcHLvAwMSDPohOADdYQJdF1FtLMZPmslvhZJk2ahkgRvq4HHUoWHRDqTEDDl2mDkfheiDgt8pw340/EocuClCuFvboQzb0cwIZgki4KhzlaE6w0InipbVzBfqoK/qRH94i0rgokSFeO11iBkp8EdV8cfJo0yD75aE2ZNRvSJ0lZKcBXLaUYmQrCzDT6tDN5SyRqYlWeDLZAg0H4JQ+Jt6M3atNLE10VSwQsN4Z6r0CBwqzXesHmV+BeoyAUri8EyMfi2FowXS5dhd7doo2DVII0V5BAjigP89GEVAtda8b2ehodU4rNaAW+dGfzlFkyo89GTlcrHYCLpKD+V7yeeHNzLjkp24Uu1Ed6G8/F8qjqGRzlbl2H2dzjpMg1KdwsHxOlmJ7GTeZC/nesXbeZ6c9OYnuxUc3fmBuFft/Ff8xMd0s65SXIb/gAAAABJRU5ErkJggg=='); }
 .icon.add { background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJvSURBVDjLpZPrS5NhGIf9W7YvBYOkhlkoqCklWChv2WyKik7blnNris72bi6dus0DLZ0TDxW1odtopDs4D8MDZuLU0kXq61CijSIIasOvv94VTUfLiB74fXngup7nvrnvJABJ/5PfLnTTdcwOj4RsdYmo5glBWP6iOtzwvIKSWstI0Wgx80SBblpKtE9KQs/We7EaWoT/8wbWP61gMmCH0lMDvokT4j25TiQU/ITFkek9Ow6+7WH2gwsmahCPdwyw75uw9HEO2gUZSkfyI9zBPCJOoJ2SMmg46N61YO/rNoa39Xi41oFuXysMfh36/Fp0b7bAfWAH6RGi0HglWNCbzYgJaFjRv6zGuy+b9It96N3SQvNKiV9HvSaDfFEIxXItnPs23BzJQd6DDEVM0OKsoVwBG/1VMzpXVWhbkUM2K4oJBDYuGmbKIJ0qxsAbHfRLzbjcnUbFBIpx/qH3vQv9b3U03IQ/HfFkERTzfFj8w8jSpR7GBE123uFEYAzaDRIqX/2JAtJbDat/COkd7CNBva2cMvq0MGxp0PRSCPF8BXjWG3FgNHc9XPT71Ojy3sMFdfJRCeKxEsVtKwFHwALZfCUk3tIfNR8XiJwc1LmL4dg141JPKtj3WUdNFJqLGFVPC4OkR4BxajTWsChY64wmCnMxsWPCHcutKBxMVp5mxA1S+aMComToaqTRUQknLTH62kHOVEE+VQnjahscNCy0cMBWsSI0TCQcZc5ALkEYckL5A5noWSBhfm2AecMAjbcRWV0pUTh0HE64TNf0mczcnnQyu/MilaFJCae1nw2fbz1DnVOxyGTlKeZft/Ff8x1BRssfACjTwQAAAABJRU5ErkJggg=='); }

@@ -1,31 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<!--[if lt IE 9]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal" class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal"><!--<![endif]-->
 <head>
     <title>Neshaminy Charter Info - Bring the MaST Charter model to the Neshaminy School District</title>
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9"> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
-    <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="all">
-    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/720_grid.css" type="text/css"><![endif]-->
-    <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
-    <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
-    <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
+    <link rel="stylesheet" href="/static/css/nci.css" type="text/css" media="all">
     <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
+    <!-- 
+    This script enables structural HTML5 elements in old IE.
+    http://code.google.com/p/html5shim/
+    -->
+    <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <!--[if lt IE 9]><script src="http://static.thomasjbradley.ca/signature-pad/flashcanvas.js"></script><![endif]-->
     <script src="/static/js/jquery.signaturepad.min.js"></script>
     <script src="/static/js/nci.js"></script>
 </head>
 <body>
-<div class="grid">
-    <div class="row" id="header">
-        <div class="slot-0-1"><a class="logo" href="/home.html"><h1>MaST Neshaminy Charter School Info</h1></a></div>
-        <div class="slot-2-3 side1">Help Bring MaST to Neshaminy!</div>
-    </div>
-    <metal:content define-slot="content"/>
-</div>
+<header id="masthead">
+        <section><a class="logo" href="/home.html"><h1>MaST Neshaminy Charter School Info</h1></a></section>
+        <section>Help Bring MaST to Neshaminy!</section>
+</header>
+<article id="content">
+<metal:content define-slot="content"/>
+</article>
+<footer>
+
+</footer>
 <script>
 $(':checkbox').iphoneStyle({
   checkedLabel: 'YES',
