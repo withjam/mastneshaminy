@@ -1,28 +1,28 @@
 <metal:main use-macro="load: global.pt">
 <div class="content" metal:fill-slot="content">
     <div class="slot-6">
-        <a href="/petition.html" class="block">
-            <div clas="heading">sign the<h2>Petition</h2></div>
+        <a href="/petition.html" class="block petition">
+            <div class="heading">sign the<strong>Petition</strong></div>
             <div class="icon"></div>
         </a>
     </div>
     <div class="slot-7">
-        <a href="/apply.html" class="block">
-            <div class="heading">you can<h2>Pre-Apply</h2></div>
+        <a href="/apply.html" class="block apply">
+            <div class="heading">you can<strong>Pre-Apply</strong></div>
             <div class="icon"></div>
         </a>
     </div>
     <div class="slot-8">
-        <a href="/why.html" class="block">
-            <div class="heading">why we need a<h2>Charter</h2></div>
+        <a href="/why.html" class="block why">
+            <div class="heading">why a<strong>Charter</strong></div>
             <div class="icon"></div>
         </a>
     </div>
     <div class="slot-9">
-        <a href="/about.html" class="block">
-            <div class="heading">about the<h2>M<span class="lower">a</span>ST Model</h2></div>
+        <a href="/about.html" class="block about">
+            <div class="heading">about the<strong>M<span class="lower">a</span>ST Model</strong></div>
             <div class="icon"></div>
-        </a>
+        </a >
     </div>
 </div>
 </metal:main>
