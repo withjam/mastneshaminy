@@ -21,13 +21,10 @@
 <body>
 <div class="grid">
     <div class="row" id="header">
-        <div class="slot-0-1 side1">Help Bring MaST</div>
-        <div class="slot-2-3"><div class="logo"><h1>MaST Neshaminy Charter School Info</h1></div></div>
-        <div class="slot-4-5 side2">To Neshaminy!</div>
+        <div class="slot-0-1"><a class="logo" href="/home.html"><h1>MaST Neshaminy Charter School Info</h1></a></div>
+        <div class="slot-2-3 side1">Help Bring MaST to Neshaminy!</div>
     </div>
-    <div class="row">
-        <metal:content define-slot="content"/>
-    </div>
+    <metal:content define-slot="content"/>
 </div>
 <script>
 $(':checkbox').iphoneStyle({

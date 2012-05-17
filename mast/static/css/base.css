@@ -102,8 +102,11 @@ hr {
 #header { text-align: center; }
 
 #header .logo {
-    background:url('../images/neshaminy-mast.png') no-repeat center center;
+    background:url('../images/neshaminy-mast.png') no-repeat left center;
     height: 105px;
+    display: block;
+    text-decoration: none;
+    border:none;
 }
 
 #header .logo h1 { display: none; }
@@ -134,6 +137,8 @@ a.block.why .icon { background-image: url('../images/icon_block_why.png'); }
 a.block.about .icon { background-image: url('../images/icon_block_about.png'); }
 a.block.petition .icon { background-image: url('../images/icon_block_petition.png'); }
 a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
+
+.row.part2 { background-color: #eee; }
 
 .banner-wrap {
 	text-align: center;
