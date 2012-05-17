@@ -1,7 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
 <head>
-    <title>Neshaminy Charter Info</title>
+    <title>Neshaminy Charter Info - Bring MaST to the Neshaminy School District</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="all">
+    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/720_grid.css" type="text/css"><![endif]-->
+    <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
+    <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
+    <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
     <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
     <link rel="stylesheet" href="/static/css/nci.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -10,24 +20,14 @@
     <script src="/static/js/nci.js"></script>
 </head>
 <body>
-<div id="header">
-    <div class="wrapper">
-        <a href="/" id="logo-main"></a>
+<div class="grid">
+    <div class="row" id="header">
+        <div class="slot-0-1 side1">Help Bring MaST</div>
+        <div class="slot-2-3 logo">MaST</div>
+        <div class="slot-4-5 side2">To Neshaminy!</div>
     </div>
-</div>
-<ul class="error" tal:condition="messages" tal:repeat="msg messages">
-    <li tal:content="msg"></li>
-</ul>
-<div id="body">
-    <div class="wrapper">
-        <div id="area-main">
-            <metal:content define-slot="content"/>
-        </div>
-    </div>
-</div>
-<div id="footer">
-    <div class="wrapper">
-        <span class="logo">&nbsp;</span>
+    <div class="row">
+        <metal:content define-slot="content"/>
     </div>
 </div>
 <script>
