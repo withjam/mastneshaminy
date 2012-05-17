@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: sommet-slab-1, sommet-slab-2, Georgia, serif;
 	font-weight: normal;
 	line-height: 1.2em;
-	padding: 0.5em 0 0.25em;
+	padding: 0 0 0.5em;
 }
 
 h1 {
@@ -146,6 +146,9 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 
 #main { margin-top: 2em }
 footer { background-color: #eee; border-top: solid 1px #ccc; margin-top: 2em }
+
+.statement { background-color: #DDD; padding: 1em; margin-bottom: 1.25em }
+.field .label { width: 50%; }
 
 
 .banner-wrap {
