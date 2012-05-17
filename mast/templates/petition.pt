@@ -6,7 +6,7 @@
 Neshaminy and urge my elected representatives to approve their charter school
 application.</h2>
         <div class="petition" style="width:310px">
-            <form method="POST" action="/petition" class="petitionForm">
+            <form method="POST" action="/petition.html" class="petitionForm">
                 <input type="hidden" name="lat" value="0"/>
                 <input type="hidden" name="lon" value="0"/>
                 <div class="field">
