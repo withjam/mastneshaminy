@@ -10,19 +10,19 @@
         <a href="/apply.html" class="block">
             <div class="heading">you can<h2>Pre-Apply</h2></div>
             <div class="icon"></div>
-        </p>
+        </a>
     </div>
     <div class="slot-8">
-        <p href="/why.html" class="block">
+        <a href="/why.html" class="block">
             <div class="heading">why we need a<h2>Charter</h2></div>
             <div class="icon"></div>
-        </p>
+        </a>
     </div>
     <div class="slot-9">
-        <p href="/about.html" class="block">
+        <a href="/about.html" class="block">
             <div class="heading">about the<h2>M<span class="lower">a</span>ST Model</h2></div>
             <div class="icon"></div>
-        </p>
+        </a>
     </div>
 </div>
 </metal:main>
