@@ -27,6 +27,7 @@ body {
 	color: #444;
 	font-family: Georgia, serif;
 	line-height: 1.5em;
+	background-color: #eee;
 }
 ol, ul {
 	list-style: square;
@@ -103,13 +104,16 @@ hr {
 
 #header .logo {
     background:url('../images/neshaminy-mast.png') no-repeat left center;
-    height: 105px;
+    height: 150px;
     display: block;
     text-decoration: none;
     border:none;
 }
 
 #header .logo h1 { display: none; }
+
+header .motto { background-color: #75aedb; padding: 1.1em 0; margin-top: 4.5em; text-align: left;}
+header .motto h2 { font-size: 1.05em; padding: 0 0 0 40px; margin: 0;color:#11518f}
 
 a.block { 
     display: block;
@@ -140,12 +144,15 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 
 .row.part2 { background-color: #eee; }
 
+#main { margin-top: 2em }
+footer { background-color: #eee; border-top: solid 1px #ccc; margin-top: 2em }
+
+
 .banner-wrap {
 	text-align: center;
-	background: #ffc;
-	border-bottom: 1px solid #ccc;
+	background: #eee;
+	border-top: 1px solid #ccc;
 	padding: 0 10px 1em;
-	margin-bottom: 1em;
 }
 
 .intro {
