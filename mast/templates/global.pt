@@ -33,7 +33,15 @@
 <footer>
     <div class="grid">
         <div class="row">
-        <div class="slot-6-7"><h3>Share the Dream</h3></div>
+            <div class="slot-6-7"><h3>Share the Dream</h3></div>
+        </div>
+        <div class="row share">
+            <div class="slot-0"><a class="facebook"><img src="/static/images/share_fbook.png"/></a></div>
+            <div class="slot-1"><a class="facebook"><img src="/static/images/share_tweet.png"/></a></div>
+            <div class="slot-2"><a class="facebook"><img src="/static/images/share_google.png"/></a></div>
+            <div class="slot-3"><a class="facebook"><img src="/static/images/share_reddit.png"/></a></div>
+            <div class="slot-4"><a class="facebook"><img src="/static/images/share_linkedin.png"/></a></div>
+            <div class="slot-5"><a class="facebook"><img src="/static/images/share_email.png"/></a></div>
         </div>
     </div>
 </footer>

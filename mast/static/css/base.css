@@ -87,7 +87,6 @@ h5, h6 {
 a, a:link, a:visited {
 	color: #11bad3;
 	text-decoration: none;
-	border-bottom: 1px solid #11bad3;
 }
 
 img {
@@ -146,6 +145,8 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 
 #main { margin-top: 2em }
 footer { background-color: #eee; border-top: solid 1px #ccc; margin-top: 2em }
+footer h3 { margin: 1.2em 0 0; color:#11508f; font-size: 1.25em; font-weight: normal; }
+footer .share DIV { text-align: center; }
 
 .statement { background-color: #DDD; padding: 1em; margin-bottom: 1.25em }
 .field .label { width: 50%; }
