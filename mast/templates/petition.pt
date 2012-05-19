@@ -10,39 +10,39 @@
         <section class="slot-6-7 petition">
             <input type="hidden" name="lat" value="0"/>
             <input type="hidden" name="lon" value="0"/>
-            <div class="field">
-                <label for="res">Are you a Neshaminy Resident?</label>
-                <input type="checkbox" name="res" id="res" value="yes"/>
+            <div class="field first">
+                <label class="label" for="res">Are you a Neshaminy Resident?</label>
+                <input type="checkbox" name="res" id="res" value="yes" checked="checked"/>
             </div>
             <div class="field">
-                <label for="par">Do you have school-age children?</label>
+                <label class="label" for="par">Do you have school-age children?</label>
                 <input type="checkbox" name="par" id="par" value="yes"/>
             </div>
             <div class="field">
-                <label for="tea">Are you a certified teacher?</label>
+                <label class="label" for="tea">Are you a certified teacher?</label>
                 <input type="checkbox" name="tea" id="tea" value="yes"/>
             </div>
             <div class="field">
-                <label for="name">Full Name</label>
+                <label class="label" for="name">Full Name</label>
                 <input type="text" name="fn" id="name" class="name"/>
             </div>
             <div class="field">
-                <label for="email">Email</label>
+                <label class="label" for="email">Email</label>
                 <input type="email" name="em" id="email" class="email"/>
             </div>
             <div class="field">
-                <label for="addr">Street Address</label>
+                <label class="label" for="addr">Street Address</label>
                 <input type="text" name="a" id="addr" class="addr"/>
             </div>
             <div class="field">
-                <label for="zip">Zipcode</label>
+                <label class="label" for="zip">Zipcode</label>
                 <input type="text" name="z" id="zip" class="zip"/>
             </div>
         </section>
         <section class="slot-7-8">
             <div class="statement"><strong>I support opening a MaST Community Charter School in Neshaminy and urge my elected representatives to approve their charter school application.</strong></div>
             <div class="field signature">
-                <label>Draw your signature</label>
+                <label><strong>Draw your signature</strong></label>
                 <div class="sig sigWrapper">
                     <canvas class="pad" width="300" height="70"></canvas>
                     <input type="hidden" name="output" class="output">
@@ -50,7 +50,8 @@
             </div>
             <div class="buttons">
                 <span class="clearButton"><a href="#clear">clear signature</a></span>
-                <button type="submit">Sign Petition</button>
+                <div class="error" tal:condition="messages" tal:content="messages"></div>
+                <button type="submit" class="submit">Sign the Petition</button>
             </div>
         </section>
         </form>

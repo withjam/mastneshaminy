@@ -149,7 +149,12 @@ footer h3 { margin: 1.2em 0 0; color:#11508f; font-size: 1.25em; font-weight: no
 footer .share DIV { text-align: center; }
 
 .statement { background-color: #DDD; padding: 1em; margin-bottom: 1.25em }
-.field .label { width: 50%; }
+.field .label { width: 50%; display: block; padding: 1.1em 0 0.05em; }
+.field.first .label { padding-top: 0; }
+.field input { width: 80%; font-size: 1.1em; }
+.buttons .submit { float:none; clear:both; display:block; margin-top: 2em;padding: 0.9em 1.5em; font-size:0.95em; background-color: #FFF333; color: #333; border:solid 1px #999000;border-radius: 8px; }
+
+.inputgrid input { font-size: 0.65em; }
 
 
 .banner-wrap {
