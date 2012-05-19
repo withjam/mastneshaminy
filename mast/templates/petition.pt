@@ -50,7 +50,9 @@
             </div>
             <div class="buttons">
                 <span class="clearButton"><a href="#clear">clear signature</a></span>
-                <div class="error" tal:condition="messages" tal:content="messages"></div>
+                <div class="errors" tal:condition="messages" tal:repeat="msg messages">
+                    <div tal:repeat="err msg"><span class="error">${err}</span></div>
+                </div>
                 <button type="submit" class="submit">Sign the Petition</button>
             </div>
         </section>

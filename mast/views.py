@@ -84,13 +84,18 @@ def post_apply_form(request):
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):
-    if 'fn' not in request.params:
-        return json_error('Full Name is required')
+    errors = []
+    if missingparam('fn',request):
+        errors.append('Full Name is required')
     b64 = request.params['b64'] if 'b64' in request.params else None
     if 'output' in request.params:
         b64 = sig2b64(request.params['output'])
     if b64 is None:
-        return json_error('Signature is required')
+        errors.append('Signature is required')
+    if missingparam('z',request):
+        errors.append('Zipcode is required')
+    if len(errors) > 0:
+        return json_error(errors)
     entry = {
         'fn': request.params['fn'],
         'par': request.params['par'] == 'yes' if 'par' in request.params else False,
