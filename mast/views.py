@@ -105,8 +105,8 @@ def post_signature(request):
         'em': request.params['em'] if 'em' in request.params else None,
         'z': request.params['z'] if 'par' in request.params else None,
         'utc': add_utc(),
-        'geo': add_geo(request),
-        'b64': b64
+        'geo': add_geo(request)
+        #'b64': b64
     }
     request.db.signatures.insert(entry)
     # write it out to a file as backup
