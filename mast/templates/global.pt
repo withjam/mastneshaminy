@@ -19,24 +19,24 @@
     <script src="/static/js/nci.js"></script>
 </head>
 <body>
-<div class="wrapper-main" style="background-color: #FFF">
-<header class="grid">
-    <div class="row" id="header">
-        <div class="slot-6"><a class="logo" href="/"><h1>MaST Neshaminy Charter School Info</h1></a></div>
-        <div id="nav" tal:condition="python:str(request.path).endswith('.html')">
-            <div class="slot-1"><a class="nav" href="/petition.html">Petition</a></div>
-            <div class="slot-2"><a class="nav" href="/apply.html">Apply</a></div>
-            <div class="slot-3"><a class="nav" href="/why.html">Why</a></div>
-            <div class="slot-4"><a class="nav" href="/about.html">About</a></div>
+<div class="wrapper-main">
+    <header class="grid">
+        <div class="row" id="header">
+            <div class="slot-6"><a class="logo" href="/"><h1>MaST Neshaminy Charter School Info</h1></a></div>
+            <div id="nav" tal:condition="python:str(request.path).endswith('.html')">
+                <div class="slot-1"><a class="nav" href="/petition.html">Petition</a></div>
+                <div class="slot-2"><a class="nav" href="/apply.html">Apply</a></div>
+                <div class="slot-3"><a class="nav" href="/why.html">Why</a></div>
+                <div class="slot-4"><a class="nav" href="/about.html">About</a></div>
+            </div>
+            <div class="slot-7-8-9 motto"><h2>Help Bring a MaST Charter School to the Neshaminy School District!</h2></div>
         </div>
-        <div class="slot-7-8-9 motto"><h2>Help Bring a MaST Charter School to the Neshaminy School District!</h2></div>
-    </div>
-</header>
-<section id="main" class="grid">
-    <metal:content define-slot="content"/>
-</section>
-<div>
-<footer>
+    </header>
+    <section id="main" class="grid">
+        <metal:content define-slot="content"/>
+    </section>
+</div>
+<div class="wrapper-share">
     <div class="grid">
         <div class="row">
             <div class="slot-6-7"><h3>Share the Dream</h3></div>
@@ -50,7 +50,17 @@
             <div class="slot-5"><a class="facebook"><img src="/static/images/share_email.png"/></a></div>
         </div>
     </div>
-</footer>
+</div>
+<div class="wrapper-foot">
+    <footer id="footer">
+        <div class="grid">
+            <div class="row">
+                <div class="slot-6-7">Questions or Concerns? Email <a href="mailto:info@neshaminycharter.info">Info@NeshaminyCharter.info</a></div>
+                <div class="slot-8-9"></div>
+            </div>
+        </div>
+    </footer>
+</div>
 <script>
 $(':checkbox').iphoneStyle({
   checkedLabel: 'YES',
