@@ -33,11 +33,11 @@ def missingparam(prop,req):
     return missing(prop,req.params)
 
 """ WWW Handlers """
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
+@view_config(route_name='oldhome', renderer='templates/mytemplate.pt')
 def my_view(request):
     return {'project':'mast','geoip':request.geoip,'ip':request.remote_addr}
     
-@view_config(route_name='realhome', renderer='templates/home.pt')
+@view_config(route_name='home', renderer='templates/home.pt')
 def web_home(request):
     return {'geoip': request.geoip}
     

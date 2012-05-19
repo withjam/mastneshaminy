@@ -27,8 +27,8 @@ def main(global_config, **settings):
     config.add_subscriber(add_geoip, NewRequest)
     config.add_static_view('static', 'static', cache_max_age=3600)
     # Web Routes
+    config.add_route('oldhome', '/oldhome.html')
     config.add_route('home', '/')
-    config.add_route('realhome', '/home.html')
     config.add_route('petition', '/petition.html')
     config.add_route('viewsign', '/signature/{filename}.png')
     config.add_route('apply', '/apply.html')

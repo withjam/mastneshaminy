@@ -22,7 +22,7 @@
 <div class="wrapper-main" style="background-color: #FFF">
 <header class="grid">
     <div class="row" id="header">
-        <div class="slot-6"><a class="logo" href="/home.html"><h1>MaST Neshaminy Charter School Info</h1></a></div>
+        <div class="slot-6"><a class="logo" href="/"><h1>MaST Neshaminy Charter School Info</h1></a></div>
         <div id="nav" tal:condition="python:not str(request.path).endswith('home.html')">
             <div class="slot-1"><a class="nav" href="/petition.html">Petition</a></div>
             <div class="slot-2"><a class="nav" href="/apply.html">Apply</a></div>
