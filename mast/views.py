@@ -50,7 +50,8 @@ def petition_thanks(request):
     entry = post_signature(request)
     if entry['status'] == 'OK':
         eid = entry['data']['_id']
-        return HTTPFound(location='/signature/'+str(eid)+'.png')
+        request.session.flash('signing our petition')
+        return HTTPFound(location='/thanks.html?eid='+str(eid))
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('petition'))
     
@@ -61,6 +62,12 @@ def view_signature(request):
                         body=sign)
     return file_response
     
+@view_config(route_name='thanks', request_method='GET',renderer='templates/thanks.pt')
+def thanks_page(request):
+    fl = request.session.pop_flash()
+    msg = fl[0] if len(fl) > 0 else 'your support'
+    return {'source': msg}
+    
 @view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
 def apply_form(request):
     return {'title': 'Pre-Enroll in Neshaminy MaST Charter School', 'messages': request.session.pop_flash()}
@@ -69,7 +76,8 @@ def apply_form(request):
 def post_apply_form(request):
     entry = post_application(request)
     if entry['status'] == 'OK':
-        return HTTPFound(location='/apply/thanks')
+        request.session.flash('pre-applying')
+        return HTTPFound(location='/thanks.html')
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('apply'))
     

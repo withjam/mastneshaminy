@@ -1,0 +1,37 @@
+<metal:main use-macro="load: global.pt">
+<div metal:fill-slot="content">
+    <div class="row">
+        <section class="slot-6-7-8-9">
+            <h2>Thank You!</h2>
+            <!-- Begin MailChimp Signup Form -->
+            <link href="http://cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+            </style>
+            <div id="mc_embed_signup">
+                <form action="http://neshaminycharter.us4.list-manage.com/subscribe/post?u=63cf6b214e924df5a7259237c&amp;id=7da605f9b1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <h2>Subscribe to our mailing list</h2>
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div class="mc-field-group">
+                    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                </label>
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </form>
+            </div>
+            <!--End mc_embed_signup-->
+        </section>
+    </div>
+    <script type="text/javascript">
+        var appForm = $('form.applyForm');
+        nci.addGeo(appForm);
+        jQuery(function() { nci.addFormGrids(appForm); appForm.find('.add').click(); });
+    </script>
+</div>
+</metal:main>
