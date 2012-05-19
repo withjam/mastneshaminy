@@ -23,7 +23,7 @@
 <header class="grid">
     <div class="row" id="header">
         <div class="slot-6"><a class="logo" href="/"><h1>MaST Neshaminy Charter School Info</h1></a></div>
-        <div id="nav" tal:condition="python:not str(request.path).endswith('home.html')">
+        <div id="nav" tal:condition="python:str(request.path).endswith('.html')">
             <div class="slot-1"><a class="nav" href="/petition.html">Petition</a></div>
             <div class="slot-2"><a class="nav" href="/apply.html">Apply</a></div>
             <div class="slot-3"><a class="nav" href="/why.html">Why</a></div>
