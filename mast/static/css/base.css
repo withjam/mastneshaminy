@@ -146,6 +146,7 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 .wrapper-foot { border-top: solid 1px #ccc; padding: 1.25em 0; }
 .wrapper-share h3 { margin: 0; color:#11508f; font-size: 1.25em; font-weight: normal; }
 .wrapper-share .share DIV { text-align: center; }
+footer { color: #666; font-size: 0.9em; }
 
 .statement { background-color: #DDD; padding: 1em; margin-bottom: 1.25em }
 .field .label { width: 50%; display: block; padding: 1.1em 0 0.05em; }

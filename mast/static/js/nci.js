@@ -95,6 +95,33 @@
         }
     };
     
+    var shareWin = 0;
+    var shareUrl = encodeURIComponent('http://neshaminycharter.info/');
+    var shareTitle = encodeURIComponent('Help us bring the MaST Charter Model to the Neshaminy School District!');
+    var share = function(where) {
+        switch(where) {
+            case 'reddit': 
+                var loc = 'http://www.reddit.com/submit?url='+shareUrl+'&title='+shareTitle;
+                break;
+            case 'linkedin':
+                var loc = 'http://www.linkedin.com/shareArticle?mini=true&url='+shareUrl+'&title='+shareTitle+'&source=NeshaminyCharter.info';
+                break;
+            case 'twitter':
+                var loc = 'http://twitter.com/home?status='+shareTitle+' '+shareUrl;
+                break;
+            case 'facebook':
+                var loc = 'http://www.facebook.com/sharer.php?u='+shareUrl+'&t='+shareTitle;
+                break;
+            case 'email':
+                // this one is different we use an internal dialog
+                break;
+        }
+        if (loc) {
+            shareWin = window.open(loc,'sharewin');
+            shareWin.focus();
+        }
+    };
+    
     // fn extensions
     jQuery.fn.extend({
         'hinted': function() {
