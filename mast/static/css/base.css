@@ -148,6 +148,14 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 .wrapper-share .share DIV { text-align: center; }
 footer { color: #666; font-size: 0.9em; }
 
+.about .overview { font-size: 0.85em; }
+.about .heading { background-color: #EEE; padding: 0.2em; font-weight:bold;}
+.about .overview li { margin-left: 2.25em; }
+.about .stats .heading { background-color: transparent; }
+.about .stats table { width: 100%; }
+.about .stats caption { font-weight: bold; }
+.about .stats th { text-align:left;background-color:#EEE; }
+
 .statement { background-color: #DDD; padding: 1em; margin-bottom: 1.25em }
 .field .label { width: 50%; display: block; padding: 1.1em 0 0.05em; }
 .field.first .label { padding-top: 0; }

@@ -87,6 +87,10 @@ def post_apply_form(request):
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('apply'))
     
+@view_config(route_name='about', renderer='templates/about.pt')
+def view_about(request):
+    return {'title': 'About the MaST Community Charter System'}
+    
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):

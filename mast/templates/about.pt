@@ -1,0 +1,134 @@
+<metal:main use-macro="load: global.pt">
+<div metal:fill-slot="content" class="about">
+    <div class="row">
+        <section class="slot-6-7-8-9">
+            <h2>About MaST Community Charter School</h2>
+        </section>
+    </div>
+    <div class="row overview">
+        <section class="slot-6-7-8">
+                <div class="heading">Program Highlights:</div>
+                <ul>
+                    <li>Visual Communication Technology
+                    <li>Project Lead the Way
+                    <li>Five (5) Advanced Placement Classes – English, History, Biology, Calculus, Psychology
+                    <li>Largest publicly accessible telescope in the Greater Delaware Valley
+                    <li>Integrated media HDTV video studio
+                    <li>Networking Essentials
+                    <li>RET-Nano Technology (University of Pennsylvania and Drexel University)
+                    <li>High-tech Media / Library Center with full video studio, computer labs, special education and resource center, counseling center, and before and after-care center.
+                    <li>Peace Garden/Outside Classroom
+                    <li>Awarded I3 ASSET grant and Environmental Education grant
+                    <li>$500,000 in scholarships to 2011 graduating class
+                    <li>Admissions include the University of Pennsylvania, Wharton, Drexel, MIT, Brown, Penn State, Temple, Villanova
+                </ul>
+                <div class="heading">Technology:</div>
+                <ul>
+                    <li>Promethean Boards/Smartboards in 65 classrooms
+                    <li>13 sets of student response systems
+                    <li>1230 computers in school
+                    <li>Every teacher has a laptop that functions on the wireless network
+                    <li>5 computers per classroom
+                    <li>9 laptop carts of 15-30 computers
+                    <li>9 active computer labs
+                    <li>26 Elmo/document cameras
+                    <li>Ratio per student: Approaching 1 to 1 (1,236 students)
+                    <li>Over 80 different software programs running educationally in our environment
+                    <li>Cisco based wireless network (38 access points) and Cisco Gigabit switching throughout
+                    <li>Live Video Feed in all classrooms
+                </ul>
+                <div class="heading">Commendations:</div>
+                <ul>
+                    <li>Met 27/27 State AYP goals this year
+                    <li>Adequate Yearly Progress for ten years
+                    <li>2007 National Charter School of the Year by the U. S. Department of Education’s Center for Education Reform
+                    <li>Commonwealth of Pennsylvania, House of Representatives Citation as an Outstanding Educational Facility
+                    <li>2008 School District of Philadelphia Best Practice Partnership (with Parent Advisory Council)
+                    <li>2009 PennFuture Award as a Green Building Leader
+                    <li>2011 Top Ten Schools in Philadelphia by Philadelphia Magazine
+                    <li>Tri-M Music Honor Society for Inspiring Music Participation and Leadership
+                    <li>Philadelphia City Council for Providing State-of-the-Art Educational Opportunities
+                    <li>2 National Merit Scholar Commended Students
+                </ul>
+        </section>
+        <section class="slot-9 stats">
+            <div class="heading">PSSA Proficiency Percentages:</div>
+            <table border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+            <td colspan="4" valign="top"><caption>Math Proficiency</caption></td>
+            </tr>
+            <tr>
+            <th valign="top" ></th>
+            <th valign="top" >MaST</th>
+            <th valign="top" >City</th>
+            <th valign="top" >State</th>
+            </tr>
+            <tr>
+            <td valign="top" >2007</td>
+            <td valign="top" >85.7</td>
+            <td valign="top" >45.0</td>
+            <td valign="top" >69.2</td>
+            </tr>
+            <tr>
+            <td valign="top" >2008</td>
+            <td valign="top" >86.7</td>
+            <td valign="top" >49.0</td>
+            <td valign="top" >71.5</td>
+            </tr>
+            <tr>
+            <td valign="top" >2009</td>
+            <td valign="top" >86.9</td>
+            <td valign="top" >51.9</td>
+            <td valign="top" >73.4</td>
+            </tr>
+            <tr>
+            <td valign="top" >2010</td>
+            <td valign="top" >88.6</td>
+            <td valign="top" >51.0</td>
+            <td valign="top" > *</td>
+            </tr>
+            </tbody>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+            <td colspan="4" valign="top"><caption>Reading Proficiency</caption></td>
+            </tr>
+            <tr>
+            <th valign="top" ></th>
+            <th valign="top" >MaST</th>
+            <th valign="top" >City</th>
+            <th valign="top" >State</th>
+            </tr>
+            <tr>
+            <td valign="top" >2007</td>
+            <td valign="top" >81.0</td>
+            <td valign="top" >40.7</td>
+            <td valign="top" >67.6</td>
+            </tr>
+            <tr>
+            <td valign="top" >2008</td>
+            <td valign="top" >81.7</td>
+            <td valign="top" >44.9</td>
+            <td valign="top" >69.8</td>
+            </tr>
+            <tr>
+            <td valign="top" >2009</td>
+            <td valign="top" >83.9</td>
+            <td valign="top" >47.7</td>
+            <td valign="top" >71.3</td>
+            </tr>
+            <tr>
+            <td valign="top" >2010</td>
+            <td valign="top" >85.3</td>
+            <td valign="top" >48.2</td>
+            <td valign="top" > *</td>
+            </tr>
+            </tbody>
+            </table>
+            <p><em>*Not Available</em></p>
+        </section>
+    </div>
+</div>
+</metal:main>
