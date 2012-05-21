@@ -51,6 +51,7 @@ def petition_thanks(request):
     if entry['status'] == 'OK':
         eid = entry['data']['_id']
         request.session.flash('signing our petition')
+        request.session.flash(entry['em'])
         return HTTPFound(location='/thanks.html?eid='+str(eid))
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('petition'))
@@ -66,7 +67,8 @@ def view_signature(request):
 def thanks_page(request):
     fl = request.session.pop_flash()
     msg = fl[0] if len(fl) > 0 else 'your support'
-    return {'source': msg}
+    em = fl[1] if len(fl) > 1 else ''
+    return {'source': msg, 'em': em}
     
 @view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
 def apply_form(request):
@@ -77,6 +79,7 @@ def post_apply_form(request):
     entry = post_application(request)
     if entry['status'] == 'OK':
         request.session.flash('pre-applying')
+        request.session.flash(entry['em'])
         return HTTPFound(location='/thanks.html')
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('apply'))
