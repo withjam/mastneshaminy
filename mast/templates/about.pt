@@ -1,5 +1,5 @@
 <metal:main use-macro="load: global.pt">
-<div metal:fill-slot="content" class="about">
+<div metal:fill-slot="content" id="about">
     <div class="row">
         <section class="slot-6-7-8-9">
             <h2>About MaST Community Charter School</h2>
