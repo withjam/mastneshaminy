@@ -141,7 +141,7 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 .row.part2 { background-color: #eee; }
 
 #main { margin-top: 2em }
-.wrapper-main { background-color: #FFF; padding-bottom: 1.5em; }
+.wrapper-main { background-color: #FFF; padding-bottom: 1.5em; overflow:hidden; }
 .wrapper-share { background-color: #EEE; border-top: solid 1px #ddd; padding: 1.5em 0; }
 .wrapper-foot { border-top: solid 1px #ccc; padding: 1.25em 0; }
 .wrapper-share h3 { margin: 0; color:#11508f; font-size: 1.25em; font-weight: normal; }
