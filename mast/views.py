@@ -6,6 +6,9 @@ from utils import read_sign
 from utils import sig2b64
 from utils import get_sign_path
 
+def create_response(title='Neshaminy Charter Info',desc='',keywords=''):
+    return {'title': title, 'description': desc, 'keywords': keywords}
+
 def json_error(msg=None):
     return {'status':'Error','msg':msg}
     
@@ -39,11 +42,15 @@ def my_view(request):
     
 @view_config(route_name='home', renderer='templates/home.pt')
 def web_home(request):
-    return {'geoip': request.geoip}
+    resp = create_response('Homepage')
+    resp['geoip'] = request.geoip
+    return resp
     
 @view_config(route_name='petition', renderer='templates/petition.pt', request_method='GET')
 def petition_form(request):
-    return {'title': 'Sign the Petition','messages':request.session.pop_flash()}
+    resp = create_response('Sign the Petition')
+    resp['messages'] = request.session.pop_flash()
+    return resp
     
 @view_config(route_name='petition', request_method='POST')
 def petition_thanks(request):
@@ -70,11 +77,16 @@ def thanks_page(request):
     msg = fl[0] if len(fl) > 0 else 'your support'
     fl = request.session.pop_flash('em')
     em = fl[0] if len(fl) > 0 else ''
-    return {'source': msg, 'em': em}
+    resp = create_response(title='Thank You!')
+    resp['source'] = msg
+    resp['em'] = em
+    return resp
     
 @view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
 def apply_form(request):
-    return {'title': 'Pre-Enroll in Neshaminy MaST Charter School', 'messages': request.session.pop_flash()}
+    resp = create_response('Pre-Enroll in Neshaminy MaST Charter School')
+    resp['messages'] = request.session.pop_flash()
+    return resp
     
 @view_config(route_name='apply', request_method='POST')
 def post_apply_form(request):
@@ -89,7 +101,7 @@ def post_apply_form(request):
     
 @view_config(route_name='about', renderer='templates/about.pt')
 def view_about(request):
-    return {'title': 'About the MaST Community Charter System'}
+    return create_response(title='About the MaST Community Charter System')
     
 """ API Handlers """
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')

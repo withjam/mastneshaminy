@@ -1,8 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
 <head>
-    <title>Neshaminy Charter Info - Bring the MaST Charter model to the Neshaminy School District</title>
+    <title>${title} - Bring the MaST Charter model to the Neshaminy School District</title>
     
+    <meta name="description" content="${description} Neshaminy Charter School Information"/>
+    <meta name="keywords" content="${keywords},Neshaminy School District, MaST Community Charter, Neshaminy Mast, Neshaminy Charter, Neshaminy Charter School, Neshaminy Strike, Neshaminy Teachers, Neshaminy, NFT, School Board, Charter Schools, School Lane Charter School, SLCS, MCCS, NSD, Neshaminy Parents, Neshaminy Public School District"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9"> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
