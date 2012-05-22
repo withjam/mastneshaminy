@@ -3,6 +3,8 @@
      * Adds the lat and long, if available, to a form
     **/
     var geopos = 0;
+    var jwin = $(window);
+    var jdoc = $(document);
     
     var useCurrentPosition = function(success,error) {
         // if we have geopos just use that
@@ -22,6 +24,43 @@
         } else {
             error();
         }
+    };
+    
+    var modalMask = 0;
+    var modalWin = 0;
+    var windowH = jwin.height();
+    var windowW = jwin.width();
+    /**
+     * Just creates and returns the modal mask, it's up to the caller to provide
+     * the contents and controls
+    **/
+    var showMask = function() {
+        if(!modalMask) {
+            modalMask = jQuery('<div id="modalmask"></div>');
+            modalMask.css({'z-index':5000,'background-color':'#000','opacity':0.75,'height':'100%','width':windowW,'top':-windowH,'left':0,'position':'fixed'});
+            modalMask.appendTo('body');
+        }
+        modalMask.animate({'top':0});
+        return modalMask;
+    };
+    var hideModal = function() {
+        if(modalMask) {
+            modalMask.animate({'top':-windowH});
+        }
+        modalWin.animate({'top':-windowH},function() { modalWin.remove(); });
+    };
+    /**
+     *  Make the provided element a modal window
+     **/
+    var makeModal = function(jele) {
+        modalWin = jQuery('<div class="modalwin"></div>').append(jele);
+        modalWin.css({'z-index':5001,'position':'fixed','top':-windowH,'left':0}).appendTo('body');
+        var w = modalWin.width();
+        var h = modalWin.height();
+        var l = (windowW - w)/2;
+        var t = (windowH - h)/2;
+        showMask();
+        modalWin.css({'left':l}).animate({'top':t});
     };
     
     /**
@@ -95,31 +134,42 @@
         }
     };
     
-    var shareWin = 0;
-    var shareUrl = encodeURIComponent('http://neshaminycharter.info/');
-    var shareTitle = encodeURIComponent('Help us bring the MaST Charter Model to the Neshaminy School District!');
-    var share = function(where) {
-        switch(where) {
-            case 'reddit': 
-                var loc = 'http://www.reddit.com/submit?url='+shareUrl+'&title='+shareTitle;
-                break;
-            case 'linkedin':
-                var loc = 'http://www.linkedin.com/shareArticle?mini=true&url='+shareUrl+'&title='+shareTitle+'&source=NeshaminyCharter.info';
-                break;
-            case 'twitter':
-                var loc = 'http://twitter.com/home?status='+shareTitle+' '+shareUrl;
-                break;
-            case 'facebook':
-                var loc = 'http://www.facebook.com/sharer.php?u='+shareUrl+'&t='+shareTitle;
-                break;
-            case 'email':
-                // this one is different we use an internal dialog
-                break;
-        }
-        if (loc) {
-            shareWin = window.open(loc,'sharewin');
-            shareWin.focus();
-        }
+    /**
+     *  Share via email
+     **/
+    var share = function() {
+    
+    };
+    
+    /**
+     *  capture email
+     **/
+    var capture = function() {
+        var box = $('<section class="mbox"></section>');
+        box.append('<p class="heading">Subscribe to our Mailing List</p>');
+        box.append('<p class="instruct">If you would like to stay informed of our progress or recieve news and updates, please join our mailing list by completing the following form.</p>');
+        var frm = $('<form name="subscribe" action="http://neshaminycharter.us4.list-manage.com/subscribe/post?u=63cf6b214e924df5a7259237c&amp;id=7da605f9b1" method="POST" target="hidframe"></form>');
+        frm.appendTo(box);
+        var fld = $('<div class="field"></div>').appendTo(frm);
+        fld.append('<label>Email Address</label>');
+        var inp = $('<div class="input"></div>').appendTo(frm);
+        inp.append('<input type="email" required="true" name="EMAIL"/>');
+        var btns = $('<div class="buttons"></div>').appendTo(frm);
+        btns.click(function(event) {
+            var t = $(event.target);
+            if (t.hasClass('cancel')) {
+                hideModal(box);
+                return;
+            }
+            if (t.hasClass('submit')) {
+                frm.submit();
+                hideModal(box);
+                return;
+            }
+        });
+        btns.append('<button class="submit">Submit</button>');
+        btns.append('<button class="cancel">Cancel</button>');
+        makeModal(box);
     };
     
     // fn extensions
@@ -147,7 +197,9 @@
     var nci = {
         'addGeo': addGeo,
         'addFormGrids': addFormGrids,
-        'isBlank': isBlank
+        'capture': capture,
+        'isBlank': isBlank,
+        'share': share
     };
     window.nci = nci;
 })();

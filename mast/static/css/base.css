@@ -165,6 +165,14 @@ footer { color: #666; font-size: 0.9em; }
 
 .inputgrid input { font-size: 0.65em; }
 
+.modalwin .mbox { background-color:#FFF;border-radius:10px;padding:2em;}
+.modalwin .heading { font-weight: bold; }
+.modalwin .instruct { font-size: 0.8em; color: #444; line-height: 1.5em; margin-bottom:2em;}
+.modalwin input { width: 90%;font-size:0.9em;}
+.modalwin .buttons { clear: both; padding: 0.75em 0; overflow:hidden; margin-top: 2em;}
+.modalwin .buttons button { float:left; padding:0.5em 1.25em; margin:0 2.5em 0 0; clear:none; font-size:0.8em; color:#666; border:solid 1px #AAA; border-radius: 10px; background-color: #CCC;}
+.modalwin .buttons .submit  { background-color:#FFF000; color:#000 }
+
 
 .banner-wrap {
 	text-align: center;
