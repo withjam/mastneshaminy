@@ -43,11 +43,19 @@
         modalMask.animate({'top':0});
         return modalMask;
     };
-    var hideModal = function() {
+    var hideModal = function(skipAnimation) {
         if(modalMask) {
-            modalMask.animate({'top':-windowH});
+            if (skipAnimation) {
+                modalMask.css({'top':-windowH});
+            } else {
+                modalMask.animate({'top':-windowH});
+            }
         }
-        modalWin.animate({'top':-windowH},function() { modalWin.remove(); });
+        if (skipAnimation) {
+            modalWin.remove();
+        } else {
+            modalWin.animate({'top':-windowH},function() { modalWin.remove(); });
+        }
     };
     /**
      *  Make the provided element a modal window
@@ -154,16 +162,16 @@
         fld.append('<label>Email Address</label>');
         var inp = $('<div class="input"></div>').appendTo(frm);
         inp.append('<input type="email" required="true" name="EMAIL"/>');
-        var btns = $('<div class="buttons"></div>').appendTo(frm);
+        var btns = $('<div class="buttons"></div>').appendTo(box);
         btns.click(function(event) {
             var t = $(event.target);
             if (t.hasClass('cancel')) {
-                hideModal(box);
-                return;
+                hideModal();
+                return false;
             }
             if (t.hasClass('submit')) {
                 frm.submit();
-                hideModal(box);
+                hideModal(true);
                 return;
             }
         });
