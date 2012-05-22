@@ -34,7 +34,7 @@
             lat.val(pos.coords.latitude);
             lon.val(pos.coords.longitude);
         };
-        useCurrentPosition(setCoords);
+        useCurrentPosition(setCoords,function(){});
     };
     
     /**
