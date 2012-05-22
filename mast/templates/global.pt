@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         
     <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="all">
-    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/1236_grid.css" type="text/css"><![endif]-->
+    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/720_grid.css" type="text/css"><![endif]-->
     <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
     <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
     <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
@@ -19,7 +19,6 @@
     <!--[if lt IE 9]><script src="/static/js/flashcanvas.js"></script><![endif]-->
     <script src="/static/js/jquery.signaturepad.min.js"></script>
     <script src="/static/js/nci.js"></script>
-    <!--[if lt IE 9]><script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script><![endif]-->
 </head>
 <body>
 <div class="wrapper-main">
