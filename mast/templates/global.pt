@@ -9,14 +9,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         
-    <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="all">
-    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/720_grid.css" type="text/css"><![endif]-->
-    <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
-    <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
-    <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
+    <link rel="stylesheet" href="/static/css/frameless.css" type="text/css" media="all">
     <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <!--[if lt IE 9]><script src="http://static.thomasjbradley.ca/signature-pad/flashcanvas.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="/static/js/flashcanvas.js"></script><![endif]-->
     <script src="/static/js/jquery.signaturepad.min.js"></script>
     <script src="/static/js/nci.js"></script>
 </head>
