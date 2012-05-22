@@ -124,6 +124,7 @@ a.block .heading {
     font-size: 0.75em;
     line-height: 1.35em;
     margin:5px 0;
+    text-align: center;
 }
 a.block .heading .lower {
     text-transform: lowercase;
