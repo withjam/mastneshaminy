@@ -121,14 +121,14 @@ def share_email(request):
     msg['Subject'] = 'Help Me Bring MaST Charter School to Neshaminy!'
     msg['From'] = fromAddr
     msg['To'] = toAddr
-    text = "Help me bring the MaST Charter School to the Neshaminy School District!\nThe MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.\nYou can learn more, and sign the petition, by visiting the http://www.NeshaminyCharter.info website."
+    text = "Help me bring the MaST Charter School to the Neshaminy School District!\nThe MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.\nYou can learn more, and sign the petition, by visiting http://www.NeshaminyCharter.info?src=emailsh"
     html = """\
     <html>
       <head></head>
       <body>
         <p><strong>Help me bring the MaST Charter School to the Neshaminy School District!</strong></p>
         <p>The MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.</p>
-        <p>You can learn more, and sign the petition, by visiting the <a href="http://www.NeshaminyCharter.info">NeshaminyCharter.info</a> website.</p>
+        <p>You can learn more, and sign the petition, by visiting the <a href="http://www.NeshaminyCharter.info?src=emailsh">NeshaminyCharter.info</a> website.</p>
       </body>
     </html>
     """
