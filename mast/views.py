@@ -126,10 +126,9 @@ def share_email(request):
     <html>
       <head></head>
       <body>
-        <p><strong>Help me bring the MaST Charter School to the Neshaminy School District!<br>
-           The MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.<br>
-           You can learn more, and sign the petition, by visiting the <a href="http://www.NeshaminyCharter.info">NeshaminyCharter.info</a> website.
-        </p>
+        <p><strong>Help me bring the MaST Charter School to the Neshaminy School District!</strong></p>
+        <p>The MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.</p>
+        <p>You can learn more, and sign the petition, by visiting the <a href="http://www.NeshaminyCharter.info">NeshaminyCharter.info</a> website.</p>
       </body>
     </html>
     """
