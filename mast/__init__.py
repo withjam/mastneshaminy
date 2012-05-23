@@ -44,6 +44,7 @@ def main(global_config, **settings):
     config.add_route('thanks', '/thanks.html')
     config.add_route('about', '/about.html')
     # API Routes
+    config.add_route('emailShare','/json/share')
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')
     config.scan()

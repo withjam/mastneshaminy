@@ -5,6 +5,8 @@ from pyramid.httpexceptions import HTTPFound
 from utils import read_sign
 from utils import sig2b64
 from utils import get_sign_path
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 def create_response(title='Neshaminy Charter Info',desc='',keywords=''):
     return {'title': title, 'description': desc, 'keywords': keywords}
@@ -104,6 +106,43 @@ def view_about(request):
     return create_response(title='About the MaST Community Charter System')
     
 """ API Handlers """
+@view_config(route_name='emailShare', renderer='jsonp', request_method='POST')
+def share_email(request):
+    errors = []
+    if missingparam('from',request):
+        errors.append('From address is required')
+    if missingparam('to',request):
+        errors.append('To address is required')
+    if len(errors) > 0:
+        return json_error(errors)
+    fromAddr = request.params['from']
+    toAddr = request.params['to']
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = 'Help Me Bring MaST Charter School to Neshaminy!'
+    msg['From'] = fromAddr
+    msg['To'] = toAddr
+    text = "Help me bring the MaST Charter School to the Neshaminy School District!\nThe MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.\nYou can learn more, and sign the petition, by visiting the http://www.NeshaminyCharter.info website."
+    html = """\
+    <html>
+      <head></head>
+      <body>
+        <p><strong>Help me bring the MaST Charter School to the Neshaminy School District!<br>
+           The MaST Community Charter, already operating in NE Philadelphia, has a fantastic record of excellence.  MaST places a high value on science and technology while giving all students the hands-on instruction that fosters a great learning environment.<br>
+           You can learn more, and sign the petition, by visiting the <a href="http://www.NeshaminyCharter.info">NeshaminyCharter.info</a> website.
+        </p>
+      </body>
+    </html>
+    """
+    # Record the MIME types of both parts - text/plain and text/html.
+    part1 = MIMEText(text, 'plain')
+    part2 = MIMEText(html, 'html')
+    # Attach parts into message container.
+    # According to RFC 2046, the last part of a multipart message, in this case
+    # the HTML message, is best and preferred.
+    msg.attach(part1)
+    msg.attach(part2)
+    request.mailer.sendmail(fromAddr,toAddr,msg.as_string())
+
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):
     errors = []

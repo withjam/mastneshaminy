@@ -172,6 +172,10 @@ footer { color: #666; font-size: 0.9em; }
 .modalwin .buttons { clear: both; padding: 0.75em 0; overflow:hidden; margin-top: 2em;}
 .modalwin .buttons button { float:left; padding:0.5em 1.25em; margin:0 2.5em 0 0; clear:none; font-size:0.8em; color:#666; border:solid 1px #AAA; border-radius: 10px; background-color: #CCC;}
 .modalwin .buttons .submit  { background-color:#FFF000; color:#000 }
+.modalwin .field.error { padding: 0; background-color: transparent;color:#C03; }
+.modalwin .field.error .input input { border:solid #C03 1px; }
+.modalwin .field label span { display: none; }
+.modalwin .field.error label span { display: inline; }
 
 
 .banner-wrap {

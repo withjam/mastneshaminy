@@ -123,8 +123,13 @@
     
     };
     
+    var emailPattern = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
+    
     var isBlank = function(str) {
         return (!str || $.trim(str) === '');
+    };
+    var isEmail = function(str) {
+        return !isBlank(str) && str.match(emailPattern);
     };
     
     var hideHint = function(event) {
@@ -146,7 +151,48 @@
      *  Share via email
      **/
     var share = function() {
-    
+        var box = $('<section class="mbox"></section>');
+        box.append('<p class="heading">Send Your Friend an Email</p>');
+        box.append('<p class="instruct">Share oure site with your friends and family so that they can learn more about MaST, why it is important to Neshaminy, and sign our petition.</p>');
+        var fld = $('<div class="field"></div>').appendTo(box);
+        fld.append('<label>Your Email Address <span>is required</span></label>');
+        var inp1 = $('<div class="input"></div>').appendTo(fld);
+        inp1.append('<input type="email" required="true" name="from"/>');
+        var fld2 = $('<div class="field"></div>').appendTo(box);
+        fld2.append('<label>Your Friend\'s Email Address <span>is required</span></label>');
+        var inp2 = $('<div class="input"></div>').appendTo(fld2);
+        inp2.append('<input type="email" required="true" name="to"/>');
+        var btns = $('<div class="buttons"></div>').appendTo(box);
+        btns.click(function(event) {
+            var t = $(event.target);
+            if (t.hasClass('cancel')) {
+                hideModal();
+                return false;
+            }
+            if (t.hasClass('submit')) {
+                fld.removeClass('error');
+                fld2.removeClass('error');
+                var from = inp1.find('input').val();
+                var to = inp2.find('input').val();
+                error = false;
+                if (!isEmail(from)) {
+                    fld.addClass('error');
+                    error = true;
+                }
+                if (!isEmail(to)) {
+                    fld2.addClass('error');
+                    error = true;
+                }
+                if (error) return;
+                // passed validation so send it off
+                $.post('/json/share',{'from':from,'to':to},function() { alert('Thanks! Your email has been sent'); });
+                hideModal();
+                return;
+            }
+        });
+        btns.append('<button class="submit">Send Email</button>');
+        btns.append('<button class="cancel">Cancel</button>');
+        makeModal(box);
     };
     
     /**
