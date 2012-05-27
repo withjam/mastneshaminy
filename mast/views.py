@@ -155,9 +155,7 @@ def share_email(request):
 
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):
-    log.debug('signature posted')
-    log.debug(request.params)
-    log.debug(request.params['fn'])
+    log.info('signature posted')
     errors = []
     if missingparam('fn',request):
         errors.append('Full Name is required')
