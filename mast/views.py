@@ -7,6 +7,17 @@ from utils import sig2b64
 from utils import get_sign_path
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import logging
+log = logging.getLogger(__name__)
+
+def prep_mongodoc(doc):
+    doc['_id'] = str(doc['_id'])
+    if 'utc' in doc:
+        doc['utc'] = doc['utc'].isoformat()
+    return doc
+    
+def prep_mongocursor(cur):
+    return [ prep_mongodoc(doc) for doc in cur]
 
 def create_response(title='Neshaminy Charter Info',desc='',keywords=''):
     return {'title': title, 'description': desc, 'keywords': keywords}
@@ -23,7 +34,7 @@ def add_utc():
 def add_geo(request):
     lat = float(request.params['lat']) if 'lat' in request.params else 0
     lon = float(request.params['lon']) if 'lon' in request.params else 0
-    if 'jkjkgeoip' in request:
+    if 'geoip' in request:
         lat = request.geoip['latitiude'] if lat is 0 else lat
         lon = request.geoip['longitutde'] if lon is 0 else lon
     return [lat,lon]
@@ -144,6 +155,9 @@ def share_email(request):
 
 @view_config(route_name='postSign', renderer='jsonp', request_method='POST')
 def post_signature(request):
+    log.debug('signature posted')
+    log.debug(request.params)
+    log.debug(request.params['fn'])
     errors = []
     if missingparam('fn',request):
         errors.append('Full Name is required')
@@ -174,7 +188,7 @@ def post_signature(request):
     img = open(fpath,'wb')
     img.write(b64.decode('base64'))
     img.close()
-    return json_ok(entry)
+    return json_ok(prep_mongodoc(entry))
     
 @view_config(route_name='postApp', renderer='jsonp', request_method='POST')
 def post_application(request):
@@ -212,4 +226,4 @@ def post_application(request):
         'utc': add_utc()
     }
     request.db.applicants.insert(data)
-    return json_ok(data)
+    return json_ok(prep_mongodc(data))
