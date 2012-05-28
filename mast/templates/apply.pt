@@ -26,7 +26,7 @@ MaST Community Charter School Model in Neshaminy School District.</div>
             </div>
             <div class="field">
                 <label class="label" for="addr">Student Address</label>
-                <input type="text" name="a1" id="addr" class="addr"/>
+                <input type="text" name="a" id="addr" class="addr"/>
             </div>
             <div class="field">
                 <label class="label" for="zip">Student Zipcode</label>

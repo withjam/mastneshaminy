@@ -176,6 +176,7 @@ def post_signature(request):
         'a': request.params['a'] if 'a' in request.params else None,
         'em': request.params['em'] if 'em' in request.params else None,
         'z': request.params['z'] if 'par' in request.params else None,
+        'src': request.params['src'] if 'src' in request.params else 'web',
         'utc': add_utc(),
         'geo': add_geo(request)
         #'b64': b64
@@ -190,12 +191,13 @@ def post_signature(request):
     
 @view_config(route_name='postApp', renderer='jsonp', request_method='POST')
 def post_application(request):
+    log.info('application posted')
     errors = []
     if missingparam('fn',request):
         errors.append('Parent/Guardian Name required')
     if missingparam('em',request):
         errors.append('Email is required')
-    if missingparam('a1',request):
+    if missingparam('a',request):
         errors.append('Address is required')
     if missingparam('z',request):
         errors.append('Zip code is required')
@@ -216,12 +218,13 @@ def post_application(request):
     data = {
         'fn': request.params['fn'],
         'em': request.params['em'],
-        'a1': request.params['a1'],
+        'a': request.params['a'],
         'a2': request.params['a2'] if not missingparam('a2',request) else None,
         'z': request.params['z'],
         'c': children,
+        'src': request.params['src'] if 'src' in request.params else 'web',
         'geo': add_geo(request),
         'utc': add_utc()
     }
     request.db.applicants.insert(data)
-    return json_ok(prep_mongodc(data))
+    return json_ok(prep_mongodoc(data))
