@@ -210,7 +210,7 @@ def post_application(request):
         croot = 'c'+str(i+1)
         child = {
             'n': request.params[croot+'n'],
-            'g': int(request.params[croot+'g']),
+            'g': request.params[croot+'g'],
             's': request.params[croot+'s'],
             'b': request.params[croot+'b']
         }
