@@ -228,3 +228,20 @@ def post_application(request):
     }
     request.db.applicants.insert(data)
     return json_ok(prep_mongodoc(data))
+    
+@view_config(route_name='appError', renderer='jsonp', request_method='POST')
+def post_errors(request):
+    log.info('receiving error')
+    if missingparam('info', request):
+        return json_error('error info not provided')
+    data = {
+        'rtype': request.matchdict['rtype'],
+        'info': request.params['info'],
+        'utc': add_utc()
+    }
+    request.db.apperrors.insert(data);
+    return json_ok('error logged')
+ 
+@view_config(route_name='appError', renderer='jsonp', request_method='GET')
+def view_errors(request):
+    return json_ok(prep_mongocursor(request.db.apperrors.find()))
