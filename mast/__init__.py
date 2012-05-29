@@ -26,7 +26,7 @@ def main(global_config, **settings):
     # Add JSONP renderer
     config.add_renderer('jsonp', JSONP(param_name='jsonp'))
     # Add GEOIP source
-    gi = pygeoip.GeoIP(settings['geoip_dat'], pygeoip.MEMORY_CACHE)
+    gi = pygeoip.GeoIP(settings['geoip_dat'], pygeoip.STANDARD)
     config.registry.settings['pygeo'] = gi
     config.add_subscriber(add_geoip, NewRequest)
     config.add_static_view('static', 'static', cache_max_age=3600)
