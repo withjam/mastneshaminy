@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
     <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
     <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
-    <link rel="stylesheet" href="/static/css/jquery.signaturepad.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <!--[if lt IE 9]>
     <script src="/static/js/flashcanvas.js"></script>

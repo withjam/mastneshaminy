@@ -44,7 +44,7 @@
             <div class="field signature">
                 <label><strong>Draw your signature</strong></label>
                 <div class="sig sigWrapper">
-                    <canvas class="pad" width="300" height="70"></canvas>
+                    <canvas class="pad" width="400" height="80"></canvas>
                     <input type="hidden" name="output" class="output">
                 </div>
             </div>
@@ -60,7 +60,7 @@
     </div>
     <script type="text/javascript">
         nci.addGeo($('form.petitionForm'));
-        jQuery(function($) { $('FORM.petitionForm').signaturePad({lineTop:55,penColour:'#000',drawOnly:true}); });
+        jQuery(function($) { $('FORM.petitionForm').signaturePad({lineTop:65,penColour:'#000',drawOnly:true}); });
     </script>
 </div>
 </metal:main>
