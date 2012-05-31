@@ -218,6 +218,7 @@ def post_application(request):
     data = {
         'fn': request.params['fn'],
         'em': request.params['em'],
+        'res': request.params['res'] == 'yes' if 'res' in request.params else False,
         'a': request.params['a'],
         'a2': request.params['a2'] if not missingparam('a2',request) else None,
         'z': request.params['z'],
