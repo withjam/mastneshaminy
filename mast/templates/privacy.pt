@@ -1,0 +1,22 @@
+<metal:main use-macro="load: global.pt">
+<div metal:fill-slot="content">
+    <div class="row">
+        <section class="slot-6-7-8">
+            <h2>Privacy & Usage</h2>
+        </section>
+    </div>
+    <div class="row">
+        <div class="slot-6-7-8-9">
+            <p>This website is owned by Matt Pileggi and operated either on behalf of itself or in association with the MaST Charter Community. This is an "opt-in" e-mail service that does not send unsolicited e-mail. The only way to receive e-mail from the operators of this website is to sign a petition or other similar registration form and submit your name, address, and e-mail address. By doing so you are authorizing the operators to add your information to a database.</p>
+            
+            <p>Information collected: To sign the petition or other similar registration form we require that you provide your name, address, zip, and email address. Other optional information that you may choose to provide may include names and birthdates of students, demographic information, preferences, etc. There are no fees, dues, or charges of any kind for signing a petition.</p>
+            
+            <p>USAGE: By signing the petition you authorize the operators of this site to include your name on the printed petition(s) that may be presented to elected officials or other recipients targeted for action by the petition(s).</p>
+            
+            <p>PRIVACY STATEMENT. The operators of this website seek to secure the Internet privacy of every person signing this petition. By subscribing to our email list you will receive regular e-mail from the operators of this website.  In all such e-mail sent to you by the operators of this site there will be an "unsubscribe" link that you may click to immediately unsubscribe and receive no further e-mail.</p>
+            
+            <p>Changes to the Privacy & Usage Statements: The operators may amend this policy from time to time. If the operators make substantial changes in the way we use your personal information we may notify you.</p>
+        </div>
+    </div>
+</div>
+</metal:main>

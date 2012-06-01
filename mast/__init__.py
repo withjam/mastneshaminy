@@ -43,6 +43,8 @@ def main(global_config, **settings):
     config.add_route('apply', '/apply.html')
     config.add_route('thanks', '/thanks.html')
     config.add_route('about', '/about.html')
+    config.add_route('why', '/why.html')
+    config.add_route('privacy', '/privacy.html')
     # API Routes
     config.add_route('emailShare','/json/share')
     config.add_route('postApp','/json/applicant')

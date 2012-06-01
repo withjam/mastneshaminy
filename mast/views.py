@@ -116,6 +116,14 @@ def post_apply_form(request):
 def view_about(request):
     return create_response(title='About the MaST Community Charter System')
     
+@view_config(route_name='privacy', renderer='templates/privacy.pt')
+def view_privacy(request):
+    return create_response(title='Privacy Policy')
+    
+@view_config(route_name='why', renderer='templates/why.pt')
+def view_privacy(request):
+    return create_response(title='Why MaST Charter is good for Neshaminy')
+    
 """ API Handlers """
 @view_config(route_name='emailShare', renderer='jsonp', request_method='POST')
 def share_email(request):

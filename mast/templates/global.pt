@@ -73,7 +73,10 @@
         <div class="grid">
             <div class="row">
                 <div class="slot-6-7">Questions or Concerns? Email <a href="mailto:info@neshaminycharter.info">Info@NeshaminyCharter.info</a></div>
-                <div class="slot-8-9" style="text-align:right"><a href="javascript:void(nci.capture())">Join our Mailing List</a></div>
+                <div class="slot-8-9" style="text-align:right">
+                    <a href="javascript:void(nci.capture())">Join our Mailing List</a>
+                    <a class="subtle" href="privacy.html">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
