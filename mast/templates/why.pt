@@ -19,11 +19,11 @@
             </div>
         </div>
     </div>
-</div>
 <script src="/static/js/slides.jquery.js"></script>
 <script>
     $(function(){
-        $('.slides').slides();
+        $('.slides').slides({play:300});
     });
 </script>
+</div>
 </metal:main>
