@@ -351,9 +351,9 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 footer { color: #666; font-size: 0.9em; }
 footer .subtle { color: #888; display: block; padding-top: 0.55em;}
 
-.slides { border: solid 1px #444; width: 1024px; height: 768px;padding:10px; }
-.slides .slidecontainer { width: 1024px;height: 768px;overflow:hidden; }
-.slides .slidecontainer div { width: 1024px;height: 768px;}
+.slides { border: solid 1px #444; width: 800px; height: 600px;padding:10px; }
+.slides .slidecontainer { width: 800px;height: 600px;overflow:hidden; }
+.slides .slidecontainer div { }
 
 #about .overview { font-size: 0.85em; }
 #about .heading { background-color: #EEE; padding: 0.2em; font-weight:bold;}
