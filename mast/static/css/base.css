@@ -550,7 +550,7 @@ a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
 footer { color: #666; font-size: 0.9em; }
 footer .subtle { color: #888; display: block; padding-top: 0.55em;}
 
-.slideshow { border: solid 1px #444; width: 840px; height: 640px;padding:0px;position:relative;margin:0 auto;}
+.slideshow { border-radius:8px; border: solid 1px #444; width: 840px; height: 640px;padding:0px;position:relative;margin:0 auto;}
 .slidesshow #slides { width: 800px;height: 600px;overflow:hidden;left:40px;top:40px; }
 .slides .slidecontainer div { }
 
