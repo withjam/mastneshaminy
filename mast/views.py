@@ -121,7 +121,7 @@ def view_privacy(request):
     return create_response(title='Privacy Policy')
     
 @view_config(route_name='why', renderer='templates/why.pt')
-def view_privacy(request):
+def view_why(request):
     return create_response(title='Why MaST Charter is good for Neshaminy')
     
 """ API Handlers """
