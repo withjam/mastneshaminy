@@ -210,7 +210,10 @@
             slideshow.slides({
                 preload: true,
                 preloadImage: '/static/images/loading.gif',
-                play: 5000,
+                play: 6500,
+                slideSpeed: 700,
+                bigTarget: true,
+                randomize: true,
                 pause: 3500,
                 hoverPause: true,
                 animationStart: function(current){

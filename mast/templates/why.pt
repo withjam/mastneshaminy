@@ -33,6 +33,9 @@
                 preloadImage: '/static/images/loading.gif',
                 play: 5000,
                 pause: 2500,
+                play: 6500,
+                slideSpeed: 700,
+                bigTarget: true,
                 hoverPause: true,
                 animationStart: function(current){
                     $('.caption').animate({
