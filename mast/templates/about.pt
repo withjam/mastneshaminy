@@ -5,6 +5,19 @@
             <h2>About MaST Community Charter School</h2>
         </section>
     </div>
+    <div class="row tour">
+        <section class="slot-6-7-8-9">
+            <div class="slideshow">
+                <div id="slides">
+                    <div class="slides_container">
+
+                    </div>
+                    <a href="#" class="prev"><img src="/static/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+                    <a href="#" class="next"><img src="/static/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+                </div>
+            </div>
+        </section>
+    </div>
     <div class="row overview">
         <section class="slot-6-7-8">
                 <div class="heading">Program Highlights:</div>
@@ -130,5 +143,100 @@
             <p><em>*Not Available</em></p>
         </section>
     </div>
+<script src="/static/js/slides.jquery.js"></script>
+    <script>
+        var data = [{
+            img: '01',
+            cap: 'Students and visitors are greeted by a large tile mosiac in the main foyer'
+        }, {
+            img: '02',
+            cap: 'The school store is new this year and carries uniforms, stationary, and school spirit.'
+        }, {
+            img: '03',
+            cap: 'The modern library helps supports the STEM model in place with computers, books, and other media.'
+        }, {
+            img: '04',
+            cap: 'Touch screen HP computers are available for use in the library.'
+        }, {
+            img: '05',
+            cap: 'Students use iMacs in the library - just one of the labs where iMacs are available to MaST students.'
+        }, {
+            img: '06',
+            cap: 'An ipad is projected onto the floor for group reading and presentations.'
+        }, {
+            img: '08',
+            cap: 'Multiple computer labs are available for any coursework focused on technology and engineering.'
+        }, {
+            img: '10',
+            cap: 'MaST Studios is a student-run TV station with green screens, interview rooms, and a separate control center.'
+        }, {
+            img: '13',
+            cap: 'Elementary, middle school, and high school each have their own wings of the shared MaST building.'
+        }, {
+            img: '14',
+            cap: 'One of the unique features of NE Philly MaST is a telescope on the upper level that is available for students to use!'
+        }, {
+            img: '16',
+            cap: 'A college-style room is available for group learning.'
+        }, {
+            img: '17',
+            cap: 'MaST recently added a virtual fitness room with multiple TVs attached to Wii consoles for wii sports and wii fit'
+        }, {
+            img: '18',
+            cap: 'Physical fitness machines are also available in the virtual fitness room'
+        }, {
+            img: '21',
+            cap: 'MaST has a full gynasium for sporting events and has a number of team sports for boys and girls each season'
+        }, {
+            img: '23',
+            cap: 'The elementary school rooms are bright and inviting, with desks and materials designed especially for them.'
+        }, {
+            img: '24',
+            cap: 'Student work and achievement decks the halls of the elementary wing'
+        }, {
+            img: '26',
+            cap: 'An auditorium with stage is used for theatre and arts.'
+        }];
+        $(function(){
+            var slideshow = $('#slides');
+            var slidecont = slideshow.children('.slides_container');
+            jQuery.each(data,function() {
+                var div = $('<div class="slide"></div>');
+                div.append('<img src="/static/images/about/slide_'+this.img+'.png" width="800" height="598"/>');
+                div.append('<div class="caption"><p>'+this.cap+'</p></div>');
+                div.appendTo(slidecont);
+            });
+            slideshow.slides({
+                preload: true,
+                preloadImage: '/static/images/loading.gif',
+                play: 5000,
+                pause: 2500,
+                hoverPause: true,
+                animationStart: function(current){
+                    $('.caption').animate({
+                        bottom:-65
+                    },100);
+                    if (window.console && console.log) {
+                        // example return of current slide number
+                        console.log('animationStart on slide: ', current);
+                    };
+                },
+                animationComplete: function(current){
+                    $('.caption').animate({
+                        bottom:0
+                    },200);
+                    if (window.console && console.log) {
+                        // example return of current slide number
+                        console.log('animationComplete on slide: ', current);
+                    };
+                },
+                slidesLoaded: function() {
+                    $('.caption').animate({
+                        bottom:0
+                    },200);
+                }
+            });
+        });
+    </script>
 </div>
 </metal:main>
