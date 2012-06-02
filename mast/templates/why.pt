@@ -7,23 +7,58 @@
     </div>
     <div class="row">
         <div class="slot-6-7-8-9">
-            <div class="slides">
-                <div class="slidecontainer">
-                    <div class="slide">
-                        <img src="/static/images/why/slide1.png"/>
+            <div class="slideshow">
+                <div id="slides">
+                    <div class="slides_container">
+
                     </div>
-                    <div class="slide">
-                        <img src="/static/images/why/slide2.png"/>
-                    </div>
+                    <a href="#" class="prev"><img src="/static/images/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+                    <a href="#" class="next"><img src="/static/images/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
                 </div>
             </div>
         </div>
     </div>
 <script src="/static/js/slides.jquery.js"></script>
-<script>
-    $(function(){
-        $('.slides').slides({play:300});
-    });
-</script>
+    <script>
+        $(function(){
+            var slideshow = $('#slides');
+            var slidecont = slideshow.children('.slides_container');
+            for(var i=1;i < 18;i++) {
+                var div = $('<div class="slide"></div>');
+                div.append('<img src="/static/images/why/slide'+i+'.png" width="800" height="600"/>');
+                div.appendTo(slidecont);
+            }
+            slideshow.slides({
+                preload: true,
+                preloadImage: '/static/images/loading.gif',
+                play: 5000,
+                pause: 2500,
+                hoverPause: true,
+                animationStart: function(current){
+                    $('.caption').animate({
+                        bottom:-35
+                    },100);
+                    if (window.console && console.log) {
+                        // example return of current slide number
+                        console.log('animationStart on slide: ', current);
+                    };
+                },
+                animationComplete: function(current){
+                    $('.caption').animate({
+                        bottom:0
+                    },200);
+                    if (window.console && console.log) {
+                        // example return of current slide number
+                        console.log('animationComplete on slide: ', current);
+                    };
+                },
+                slidesLoaded: function() {
+                    $('.caption').animate({
+                        bottom:0
+                    },200);
+                }
+            });
+        });
+    </script>
 </div>
 </metal:main>
