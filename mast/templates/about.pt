@@ -141,6 +141,7 @@
             </tbody>
             </table>
             <p><em>*Not Available</em></p>
+            <p><img style="box-shadow: 5px 5px 9px #999" src="/static/images/about/highschool_hallway.jpg" alt="The MaST highschool hallway" border="0"/></p>
         </section>
     </div>
 <script src="/static/js/slides.jquery.js"></script>
