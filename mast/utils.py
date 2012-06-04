@@ -7,6 +7,10 @@ from signpad2image import s2i
 
 _here = os.path.dirname(__file__)
 
+def get_upload_path(name,ext):
+    path = os.path.join(_here, 'uploads', name+ext)
+    return path
+
 def get_sign_path(name):
     path = os.path.join(_here, 'signatures', name+'.png')
     return path

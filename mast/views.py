@@ -5,10 +5,19 @@ from pyramid.httpexceptions import HTTPFound
 from utils import read_sign
 from utils import sig2b64
 from utils import get_sign_path
+from utils import get_upload_path
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import mimetypes
 import logging
 log = logging.getLogger(__name__)
+
+def init_mimetypes(mimetypes):
+    # this is a function so it can be unittested
+    if hasattr(mimetypes, 'init'):
+        mimetypes.init()
+        return True
+    return False
 
 def prep_mongodoc(doc):
     doc['_id'] = str(doc['_id'])
@@ -124,7 +133,58 @@ def view_privacy(request):
 def view_why(request):
     return create_response(title='Why MaST Charter is good for Neshaminy')
     
+@view_config(route_name='upload', renderer='templates/uploads.pt', request_method='GET')
+def upload_form(request):
+    resp = create_response(title='Upload Paper Documents')
+    resp['messages'] = request.session.pop_flash()
+    return resp
+    
+@view_config(route_name='upload', request_method='POST')
+def post_upload(request):
+    entry = upload_doc(request)
+    if entry['status'] == 'OK':
+        em = entry['data']['em'] if 'em' in entry['data'] else ''
+        request.session.flash('pre-applying','src',)
+        request.session.flash(em,'em')
+        return HTTPFound(location='/admin/upload-thanks.html')
+    request.session.flash(entry['msg'])
+    return HTTPFound(location=request.route_url('upload'))
+    
+doctypes = ['application/zip','application/gzip','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 """ API Handlers """
+def upload_doc(request):
+    errors = []
+    if missingparam('name',request):
+        errors.append('Your Name is required')
+    if request.params['docfile'] is None:
+        errors.append('A file is required')
+    if len(errors) == 0:
+        init_mimetypes(mimetypes)
+        fname = request.params['docfile'].filename
+        mtype = mimetypes.guess_type(fname)
+        if mtype[0] not in doctypes:
+            errors.append('File is not a valid format.  Please upload .zip, .pdf, or .doc files.')
+    if len(errors):
+        return json_error(errors)
+    entry = {
+    
+    }
+    request.db.uploads.insert(entry)
+    # write it out to a file as backup
+    input_file = request.POST['docfile'].file
+    fpath = get_upload_path(str(entry['_id']),mimetypes.guess_extension(mtype[0]))
+    output_file = open(fpath, 'wb')
+
+    # Finally write the data to the output file
+    input_file.seek(0)
+    while 1:
+        data = input_file.read(2<<16)
+        if not data:
+            break
+        output_file.write(data)
+    output_file.close()
+    return json_ok(entry)
+
 @view_config(route_name='emailShare', renderer='jsonp', request_method='POST')
 def share_email(request):
     errors = []

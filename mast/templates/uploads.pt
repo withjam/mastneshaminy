@@ -1,0 +1,57 @@
+<metal:main use-macro="load: global.pt">
+<div metal:fill-slot="content">
+    <div class="row">
+        <section class="slot-6-7-8">
+            <h2>Upload Scanned Documents</h2>
+        </section>
+    </div>
+    <div class="row">
+        <form method="POST" action="/admin/upload.html" class="uploadForm" accept-charset="utf-8"
+      enctype="multipart/form-data">
+        <section class="slot-6-7-8-9 uploader">
+            <div class="centered" style="width:60%;margin:auto">
+                <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Note: You can upload multiple files by zipping them up</div>
+                <div class="field">
+                    <label class="label" for="name">Your Name</label>
+                    <input type="text" name="name" id="name" class="name"/>
+                </div>
+                <div class="field">
+                    <label class="label" for="email">Type of Document</label>
+                    <select name="doctype" class="doctype">
+                        <option value="pet">Petition</option>
+                        <option value="app">Pre-Application</option>
+                    </select>
+                </div>
+                <div class="field" id="signature_count">
+                    <label class="label" for="cnt">Number of signatures:</label>
+                    <input type="text" name="cnt" class="number"/>
+                </div>
+                <div class="field">
+                    <label class="label" for="upfile">File (pdf, doc, or zip file)</label>
+                    <input type="file" name="docfile" id="upfile" class="file"/>
+                </div>
+                <div class="buttons">
+                    <div class="errors" tal:condition="messages" tal:repeat="msg messages">
+                        <div tal:repeat="err msg"><span class="error">${err}</span></div>
+                    </div>
+                    <button type="submit" class="submit">Submit Upload</button>
+                </div>
+        </section>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var cntfield = $('#signature_count');
+        $('select[name=doctype]').change(function(e) {
+            if ($(this).val() === 'pet') {
+                cntfield.show();
+            } else {
+                cntfield.hide();
+            }
+        }).change();
+        $('form.uploadForm').bind('submit',function(event) {
+            $('button.submit').attr('disabled','disabled').html('Uploading...').css({'backgroundColor':'#AAA','borderColor':'#999'});
+            return true;
+        });
+    </script>
+</div>
+</metal:main>
