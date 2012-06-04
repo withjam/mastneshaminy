@@ -156,7 +156,7 @@ def upload_doc(request):
     errors = []
     if missingparam('name',request):
         errors.append('Your Name is required')
-    if request.params['docfile'] is None:
+    if request.params['docfile'] is None or request.params['docfile'].filename is None:
         errors.append('A file is required')
     if len(errors) == 0:
         init_mimetypes(mimetypes)
@@ -167,7 +167,11 @@ def upload_doc(request):
     if len(errors):
         return json_error(errors)
     entry = {
-    
+        'who': request.params['name'],
+        'dtype': request.params['dtype'],
+        'cnt': int(request.params['count']) if 'count' in request.params else 0,
+        'utc': add_utc(),
+        'geo': add_geo(request)
     }
     request.db.uploads.insert(entry)
     # write it out to a file as backup
@@ -183,7 +187,7 @@ def upload_doc(request):
             break
         output_file.write(data)
     output_file.close()
-    return json_ok(entry)
+    return json_ok(prep_mongodoc(entry))
 
 @view_config(route_name='emailShare', renderer='jsonp', request_method='POST')
 def share_email(request):

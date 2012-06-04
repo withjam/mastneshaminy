@@ -16,15 +16,15 @@
                     <input type="text" name="name" id="name" class="name"/>
                 </div>
                 <div class="field">
-                    <label class="label" for="email">Type of Document</label>
-                    <select name="doctype" class="doctype">
+                    <label class="label" for="dtype">Type of Document</label>
+                    <select name="dtype" class="doctype">
                         <option value="pet">Petition</option>
                         <option value="app">Pre-Application</option>
                     </select>
                 </div>
                 <div class="field" id="signature_count">
-                    <label class="label" for="cnt">Number of signatures:</label>
-                    <input type="text" name="cnt" class="number"/>
+                    <label class="label" for="count">Number of signatures:</label>
+                    <input type="text" name="count" class="number"/>
                 </div>
                 <div class="field">
                     <label class="label" for="upfile">File (pdf, doc, or zip file)</label>
