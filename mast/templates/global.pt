@@ -64,7 +64,7 @@
             <div class="slot-2"><a title="Share on Google +" class="googleplus" target="sharewin" href="https://plusone.google.com/_/+1/confirm?hl=en&url=http://NeshaminyCharter.info/"><img src="/static/images/share_google.png"/></a></div>
             <div class="slot-3"><a title="Share on Reddit" class="reddit" href="http://www.reddit.com/submit?url=http://neshaminycharter.info&title=Help us bring the MaST Charter School model to the Neshaminy School District!" target="sharewin"><img src="/static/images/share_reddit.png"/></a></div>
             <div class="slot-4"><a title="Share on LinkedIn" class="linkedin" target="sharewin" href="http://www.linkedin.com/shareArticle?mini=true&url=http://NeshaminyCharter.info&title=Help bring the MaST Charter School to the Neshaminy School District&source=NeshaminyCharter.info"><img src="/static/images/share_linkedin.png"/></a></div>
-            <div class="slot-5"><a title="Share MaST via Email" class="email" href="javascript:void(nci.share(this));"><img src="/static/images/share_email.png"/></a></div>
+            <div class="slot-5"><a href="http://www.addthis.com/bookmark.php" title="Share MaST via Email" class="email addthis_button_email"><img src="/static/images/share_email.png"/></a></div>
         </div>
     </div>
 </div>
@@ -81,6 +81,9 @@
         </div>
     </footer>
 </div>
+<!-- AddThis Button BEGIN -->
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fcdf6193576eabd"></script>
+<!-- AddThis Button END -->
 <script>
 $(':checkbox').iphoneStyle({
   checkedLabel: 'YES',

@@ -150,13 +150,13 @@ def post_upload(request):
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('upload'))
     
-doctypes = ['application/zip','application/gzip','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 """ API Handlers """
 def upload_doc(request):
     errors = []
     if missingparam('name',request):
         errors.append('Your Name is required')
-    if request.params['docfile'] is None or request.params['docfile'].filename is None:
+    if request.params['docfile'] is None or not hasattr(request.params['docfile'], 'filetype') or request.params['docfile'].filename is None:
         errors.append('A file is required')
     if len(errors) == 0:
         init_mimetypes(mimetypes)

@@ -11,6 +11,9 @@
         <section class="slot-6-7-8-9 uploader">
             <div class="centered" style="width:60%;margin:auto">
                 <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Note: You can upload multiple files by zipping them up</div>
+                <div class="errors" tal:condition="messages" tal:repeat="msg messages">
+                    <div tal:repeat="err msg"><span class="error">${err}</span></div>
+                </div>                    
                 <div class="field">
                     <label class="label" for="name">Your Name</label>
                     <input type="text" name="name" id="name" class="name"/>
@@ -27,13 +30,10 @@
                     <input type="text" name="count" class="number"/>
                 </div>
                 <div class="field">
-                    <label class="label" for="upfile">File (pdf, doc, or zip file)</label>
+                    <label class="label" for="upfile">File (pdf, doc, jpg, or png file)</label>
                     <input type="file" name="docfile" id="upfile" class="file"/>
                 </div>
                 <div class="buttons">
-                    <div class="errors" tal:condition="messages" tal:repeat="msg messages">
-                        <div tal:repeat="err msg"><span class="error">${err}</span></div>
-                    </div>
                     <button type="submit" class="submit">Submit Upload</button>
                 </div>
         </section>
