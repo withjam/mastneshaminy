@@ -156,8 +156,10 @@ def upload_doc(request):
     errors = []
     if missingparam('name',request):
         errors.append('Your Name is required')
-    if request.params['docfile'] is None or not hasattr(request.params['docfile'], 'filetype') or request.params['docfile'].filename is None:
+    if request.params['docfile'] is None:
         errors.append('A file is required')
+    if request.params['docfile'].filename is None:
+        errors.append('The filename was missing')
     if len(errors) == 0:
         init_mimetypes(mimetypes)
         fname = request.params['docfile'].filename
