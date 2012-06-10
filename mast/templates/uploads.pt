@@ -10,7 +10,7 @@
       enctype="multipart/form-data">
         <section class="slot-6-7-8-9 uploader">
             <div class="centered" style="width:60%;margin:auto">
-                <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Note: You can upload multiple files by zipping them up</div>
+                <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Tip: If you have multiple sheets you can combine scanned in images to a single PDF.</div>
                 <div class="errors" tal:condition="messages" tal:repeat="msg messages">
                     <div tal:repeat="err msg"><span class="error">${err}</span></div>
                 </div>                    
@@ -26,8 +26,8 @@
                     </select>
                 </div>
                 <div class="field" id="signature_count">
-                    <label class="label" for="count">Number of signatures:</label>
-                    <input type="text" name="count" class="number"/>
+                    <label class="label" for="count">Total Signatures or Applicants:</label>
+                    <input type="text" name="count" class="number" value="1"/>
                 </div>
                 <div class="field">
                     <label class="label" for="upfile">File (pdf, doc, jpg, or png file)</label>
@@ -40,14 +40,6 @@
         </form>
     </div>
     <script type="text/javascript">
-        var cntfield = $('#signature_count');
-        $('select[name=doctype]').change(function(e) {
-            if ($(this).val() === 'pet') {
-                cntfield.show();
-            } else {
-                cntfield.hide();
-            }
-        }).change();
         $('form.uploadForm').bind('submit',function(event) {
             $('button.submit').attr('disabled','disabled').html('Uploading...').css({'backgroundColor':'#AAA','borderColor':'#999'});
             return true;

@@ -45,11 +45,15 @@ def main(global_config, **settings):
     config.add_route('about', '/about.html')
     config.add_route('why', '/why.html')
     config.add_route('privacy', '/privacy.html')
+    # ADMIN Routes
+    config.add_route('dashboard','/admin/dashboard.html')
+    config.add_route('signatures','/admin/signatures.html')
+    config.add_route('clean','/admin/clean.html')
+    config.add_route('upload','/admin/upload.html')
     # API Routes
     config.add_route('emailShare','/json/share')
     config.add_route('postApp','/json/applicant')
     config.add_route('postSign','/json/sign')
-    config.add_route('upload','/admin/upload.html')
     config.add_route('appError','/json/error/{rtype}')
     config.scan()
     return config.make_wsgi_app()

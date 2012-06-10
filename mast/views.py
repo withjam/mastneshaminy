@@ -49,14 +49,30 @@ def add_geo(request):
         lon = request.geoip['longitutde'] if lon is 0 else lon
     return [lat,lon]
     
-mapCnt = Code('function() { emit("cnt",this.cnt || 0) }')
+mapCnt = Code('function() { emit(this.dtype,this.cnt || 0) }')
 reduceCnt = Code('function(k,v) { var t = 0;  for(var i=0;i < v.length;i++) { t+=v[i]; } return t; }')
-def getsigcount(request):
-    cnt = request.db.signatures.count()
+def reduceups(request,split=False):
     result = request.db.uploads.map_reduce(mapCnt,reduceCnt,'countresults')
-    for doc in result.find():
-        cnt += doc['value']
-    return int(cnt)
+    return result
+
+def getsigcount(request,split=False):
+    dcnt = request.db.signatures.count()
+    ucnt = 0
+    for doc in reduceups(request).find({'_id':'pet'}):
+        ucnt += doc['value']
+    tot = ucnt + dcnt
+    return int(tot) if not split else {'tot':int(tot),'dcnt':int(dcnt),'ucnt':int(ucnt)}
+    
+def getappcount(request,split=False):
+    dcnt = 0
+    for doc in request.db.applicants.find():
+        dcnt += len(doc['c'])
+    result = reduceups(request)
+    ucnt = 0
+    for doc in result.find({'_id':'app'}):
+        ucnt += doc['value']
+    tot = ucnt + dcnt
+    return int(tot) if not split else {'tot':int(tot),'dcnt':int(dcnt),'ucnt':int(ucnt)}
     
 def missing(prop,obj):
     val = obj[prop] if prop in obj else None
@@ -161,6 +177,13 @@ def post_upload(request):
     request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('upload'))
     
+@view_config(route_name="dashboard", request_method="GET", renderer="templates/dashboard.pt")
+def view_dashboard(request):
+    resp = create_response(title='Dashboard')
+    resp['sig'] = getsigcount(request,True)
+    resp['app'] = getappcount(request,True)
+    return resp
+    
 doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 """ API Handlers """
 def upload_doc(request):
@@ -182,7 +205,7 @@ def upload_doc(request):
     entry = {
         'who': request.params['name'],
         'dtype': request.params['dtype'],
-        'cnt': int(request.params['count']) if 'count' in request.params else 0,
+        'cnt': int(request.params['count']) if 'count' in request.params else 1,
         'utc': add_utc(),
         'geo': add_geo(request)
     }
