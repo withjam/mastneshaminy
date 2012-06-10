@@ -19,7 +19,7 @@
             </table>
             <h4>Known signature locations*</h4>
             <div id="map_canvas"></div>
-            <div class="note"><em>* an estimate based on ip address or location of local device</em></div>
+            <div class="note"><em>* an estimate based on ip address or location of local device (pins are anonymous)</em></div>
         </section>
         <section class="slot-8-9">
             <h3>Pre-Applications <span class="total">${app.tot}</span></h3>
@@ -55,7 +55,7 @@
       function gmapinit() {
         var myOptions = {
           center: new google.maps.LatLng(40.1730252,-74.8740752),
-          zoom: 12,
+          zoom: 11,
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         return new google.maps.Map(document.getElementById("map_canvas"),
