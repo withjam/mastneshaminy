@@ -23,7 +23,6 @@ body {
 	background:#efefef url(../img/background.png) repeat top center;
 	padding:20px 0;
 	position:relative;
-	text-shadow:0 1px 0 rgba(255,255,255,.8);
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -510,6 +509,9 @@ img {
 
 header .motto { background-color: #75aedb; padding: 1.1em 0; margin-top: 4.5em; text-align: left;}
 header .motto h2 { font-size: 1.05em; padding: 0 0 0 40px; margin: 0;color:#11518f}
+
+.wrapper-admin header .motto { background-color: #E90; }
+.wrapper-admin header .motto h2 { color: #000; }
 
 a.block { 
     display: block;

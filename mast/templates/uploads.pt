@@ -1,4 +1,4 @@
-<metal:main use-macro="load: global.pt">
+<metal:main use-macro="load: admin.pt">
 <div metal:fill-slot="content">
     <div class="row">
         <section class="slot-6-7-8">

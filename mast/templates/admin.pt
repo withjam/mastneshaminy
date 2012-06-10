@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+    <title>${title} - Bring the MaST Charter model to the Neshaminy School District</title>
+    
+    <meta name="description" content="${description} Neshaminy Charter School Information"/>
+    <meta name="keywords" content="${keywords},Neshaminy School District, MaST Community Charter, Neshaminy Mast, Neshaminy Charter, Neshaminy Charter School, Neshaminy Strike, Neshaminy Teachers, Neshaminy, NFT, School Board, Charter Schools, School Lane Charter School, SLCS, MCCS, NSD, Neshaminy Parents, Neshaminy Public School District"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="all">
+    <!--[if lt IE 9 ]><link rel="stylesheet" href="/static/css/720_grid.css" type="text/css"><![endif]-->
+    <link rel="stylesheet" href="/static/css/720_grid.css" type="text/css" media="screen and (min-width: 720px)">
+    <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
+    <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/static/js/flashcanvas.js"></script>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.signaturepad.min.js"></script>
+    <script src="/static/js/nci.js"></script>
+</head>
+<body>
+<div class="wrapper-main wrapper-admin">
+    <header class="grid">
+        <div class="row" id="header">
+            <div class="slot-6"><a class="logo" href="/"><h1>MaST Neshaminy Charter School Info</h1></a></div>
+            <div id="nav" tal:condition="python:str(request.path).endswith('.html')">
+                <div class="slot-1"><a class="nav" href="/admin/index.html">Dashboard</a></div>
+                <div class="slot-2"><a class="nav" href="/admin/upload.html">Upload</a></div>
+                <div class="slot-3"><a class="nav" href="/admin/clean.html">Clean</a></div>
+                <div class="slot-4"><a class="nav" href="/admin/faq.html">FAQ</a></div>
+            </div>
+            <div class="slot-7-8-9 motto"><h2>Site Administration Section</h2></div>
+        </div>
+    </header>
+    <section id="main" class="grid">
+        <metal:content define-slot="content"/>
+    </section>
+</div>
+<div class="wrapper-share">
+    <div class="grid">
+        <div class="row">
+            <div class="slot-6-7"><h3>Share the Dream</h3></div>
+        </div>
+        <div class="row share">
+            <div class="slot-0"><a title="Share on Facebook" class="facebook" href="http://www.facebook.com/sharer.php?u=http://NeshaminyCharter.info&t=Help me bring the MaST Charter School to the Neshaminy School District! Find out how at http://NeshaminyCharter.info" target="sharewin"><img src="/static/images/share_fbook.png"/></a></div>
+            <div class="slot-1"><a title="Send a Tweet!" class="tweet" href="http://twitter.com/home?status=Bring MaST Charter School to Neshaminy School District http://NeshaminyCharter.info" target="sharewin"><img src="/static/images/share_tweet.png"/></a></div>
+            <div class="slot-2"><a title="Share on Google +" class="googleplus" target="sharewin" href="https://plusone.google.com/_/+1/confirm?hl=en&url=http://NeshaminyCharter.info/"><img src="/static/images/share_google.png"/></a></div>
+            <div class="slot-3"><a title="Share on Reddit" class="reddit" href="http://www.reddit.com/submit?url=http://neshaminycharter.info&title=Help us bring the MaST Charter School model to the Neshaminy School District!" target="sharewin"><img src="/static/images/share_reddit.png"/></a></div>
+            <div class="slot-4"><a title="Share on LinkedIn" class="linkedin" target="sharewin" href="http://www.linkedin.com/shareArticle?mini=true&url=http://NeshaminyCharter.info&title=Help bring the MaST Charter School to the Neshaminy School District&source=NeshaminyCharter.info"><img src="/static/images/share_linkedin.png"/></a></div>
+            <div class="slot-5"><a href="http://www.addthis.com/bookmark.php" title="Share MaST via Email" class="email addthis_button_email"><img src="/static/images/share_email.png"/></a></div>
+        </div>
+    </div>
+</div>
+<div class="wrapper-foot">
+    <footer id="footer">
+        <div class="grid">
+            <div class="row">
+                <div class="slot-6-7">Questions or Concerns? Email <a href="mailto:info@neshaminycharter.info">Info@NeshaminyCharter.info</a></div>
+                <div class="slot-8-9" style="text-align:right">
+                    <a href="javascript:void(nci.capture())">Join our Mailing List</a>
+                    <a class="subtle" href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+$(':checkbox').iphoneStyle({
+  checkedLabel: 'YES',
+  uncheckedLabel: 'NO'
+});
+</script>
+</body>
+</html>
