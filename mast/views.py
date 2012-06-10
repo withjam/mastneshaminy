@@ -10,6 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import mimetypes
 import logging
+from bson.code import Code
 log = logging.getLogger(__name__)
 
 def init_mimetypes(mimetypes):
@@ -43,10 +44,19 @@ def add_utc():
 def add_geo(request):
     lat = float(request.params['lat']) if 'lat' in request.params else 0
     lon = float(request.params['lon']) if 'lon' in request.params else 0
-    if 'geoip' in request:
+    if hasattr(request,'geoip'):
         lat = request.geoip['latitiude'] if lat is 0 else lat
         lon = request.geoip['longitutde'] if lon is 0 else lon
     return [lat,lon]
+    
+mapCnt = Code('function() { emit("cnt",this.cnt || 0) }')
+reduceCnt = Code('function(k,v) { var t = 0;  for(var i=0;i < v.length;i++) { t+=v[i]; } return t; }')
+def getsigcount(request):
+    cnt = request.db.signatures.count()
+    result = request.db.uploads.map_reduce(mapCnt,reduceCnt,'countresults')
+    for doc in result.find():
+        cnt += doc['value']
+    return int(cnt)
     
 def missing(prop,obj):
     val = obj[prop] if prop in obj else None
@@ -66,6 +76,7 @@ def my_view(request):
 def web_home(request):
     resp = create_response('Homepage')
     resp['geoip'] = request.geoip
+    resp['sigcnt'] = getsigcount(request)
     return resp
     
 @view_config(route_name='petition', renderer='templates/petition.pt', request_method='GET')

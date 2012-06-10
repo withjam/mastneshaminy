@@ -538,6 +538,8 @@ a.block.why .icon { background-image: url('../images/icon_block_why.png'); }
 a.block.about .icon { background-image: url('../images/icon_block_about.png'); }
 a.block.petition .icon { background-image: url('../images/icon_block_petition.png'); }
 a.block.apply .icon { background-image: url('../images/icon_block_apply.png'); }
+a.block .badge { position: relative; height: 0; width: 100%; }
+a.block .badge .count { position: absolute; width: 45px;height: 38px; padding-top:8px;text-align:center;top:-165px;right:-10px; background-color:#FF1400; border-radius: 30px; border:solid 1px #000; color: #FFF; font-size:14px; }
 
 .row.part2 { background-color: #eee; }
 

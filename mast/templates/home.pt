@@ -5,6 +5,7 @@
             <a href="/petition.html" class="block petition">
                 <div class="heading">sign the<strong>Petition</strong></div>
                 <div class="icon"></div>
+                <div class="badge"><div class="count">${sigcnt}</div></div>
             </a>
         </div>
         <div class="slot-7">
