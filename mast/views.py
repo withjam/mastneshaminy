@@ -74,6 +74,18 @@ def getappcount(request,split=False):
     tot = ucnt + dcnt
     return int(tot) if not split else {'tot':int(tot),'dcnt':int(dcnt),'ucnt':int(ucnt)}
     
+afmap = Code('function() { this.c.forEach(function(c) { if(c.s === "m" || c.s === "Boy") { emit("Boys",1); } else { emit("Girls",1); } if (c.g === "K" || parseInt(c.g) === 0) { emit(0,1); } else { emit(parseInt(c.g),1); } }); }')
+afreduce = Code('function(k,v) { var t = 0;  for(var i=0;i < v.length;i++) { t+=v[i]; } return t; }')
+def getappfacets(request):
+    coll = request.db.applicants.map_reduce(afmap,afreduce,'appfacets')
+    facets = { 'grades': [], 'genders': [] };
+    for doc in coll.find():
+        if doc['_id'] in ['Boys','Girls']:
+            facets['genders'].append({'id':doc['_id'], 'value': doc['value']})
+        else:
+            facets['grades'].append({'id': doc['_id'] if doc['_id'] != 0 else 'K', 'value': int(doc['value'])})
+    return facets
+    
 def missing(prop,obj):
     val = obj[prop] if prop in obj else None
     if val is not None and len(val.strip()) > 0:
@@ -182,6 +194,7 @@ def view_dashboard(request):
     resp = create_response(title='Dashboard')
     resp['sig'] = getsigcount(request,True)
     resp['app'] = getappcount(request,True)
+    resp['app']['facets'] = getappfacets(request)
     return resp
     
 doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']

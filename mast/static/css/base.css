@@ -513,6 +513,10 @@ header .motto h2 { font-size: 1.05em; padding: 0 0 0 40px; margin: 0;color:#1151
 .wrapper-admin header .motto { background-color: #E90; }
 .wrapper-admin header .motto h2 { color: #000; }
 
+.dashboard table.dataview { width: 90%; border-collapse: collapse; }
+.dashboard h4 { margin: 0; padding: 1.1em; font-size: 14px; }
+#map_canvas { width: 100%; height: 235px; }
+
 a.block { 
     display: block;
     background-color: #0b4d8e;

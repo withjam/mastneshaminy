@@ -5,9 +5,9 @@
             <h2>Dashboard</h2>
         </section>
     </div>
-    <div class="row">
+    <div class="row dashboard">
         <section class="slot-6-7">
-            <h3>Petition Signatures: ${sig.tot}</h3>
+            <h3>Petition Signatures <span class="total">${sig.tot}</span></h3>
             <table class="dataview">
             <tr>
                 <td class="label">Digital Signatures</td>
@@ -17,9 +17,10 @@
                 <td class="label">Uploaded Signatures</td>
                 <td class="value numeric">${sig.ucnt}</td>
             </table>
+            <div id="map_canvas"></div>
         </section>
         <section class="slot-8-9">
-            <h3>Pre-Applications: ${app.tot}</h3>
+            <h3>Pre-Applications <span class="total">${app.tot}</span></h3>
             <table class="dataview">
             <tr>
                 <td class="label">Digital Applications</td>
@@ -29,7 +30,40 @@
                 <td class="label">Uploaded Applications</td>
                 <td class="value numeric">${app.ucnt}</td>
             </table>
+            <h4>Genders</h4>
+            <table class="facets">
+            <tr tal:repeat="gender app.facets.genders">
+                <td tal:content="gender.id">id</td>
+                <td tal:content="int(gender.value)">value</td>
+            </tr>
+            </table>
+            <h4>Grades</h4>
+            <table class="facets">
+            <tr tal:repeat="grade app.facets.grades">
+                <td tal:content="int(grade.id) if grade.id != 'K' else 'K'">id</td>
+                <td tal:content="grade.value">value</td>
+            </tr>
+            </table>
         </section>
     </div>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAcgQJ_lfDxEJqWMgLYAOY35q0uU2Vq-dg&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function gmapinit() {
+        var myOptions = {
+          center: new google.maps.LatLng(40.1730252,-74.8740752),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+      }
+    </script>
+    <script>
+    jQuery(function() {
+        gmapinit();
+    });
+    </script>
 </div>
 </metal:main>
