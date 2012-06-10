@@ -86,6 +86,14 @@ def getappfacets(request):
             facets['grades'].append({'id': doc['_id'] if doc['_id'] != 0 else 'K', 'value': int(doc['value'])})
     return facets
     
+def getsiglocs(request):
+    locs = []
+    for doc in request.db.signatures.find():
+        if 'geo' in doc and doc['geo'][0] != 0:
+            locs.append({'lat':doc['geo'][0],'lon':doc['geo'][1]})
+        
+    return locs
+    
 def missing(prop,obj):
     val = obj[prop] if prop in obj else None
     if val is not None and len(val.strip()) > 0:
@@ -193,6 +201,7 @@ def post_upload(request):
 def view_dashboard(request):
     resp = create_response(title='Dashboard')
     resp['sig'] = getsigcount(request,True)
+    resp['sig']['locs'] = getsiglocs(request)
     resp['app'] = getappcount(request,True)
     resp['app']['facets'] = getappfacets(request)
     return resp
