@@ -10,6 +10,9 @@
       enctype="multipart/form-data">
         <section class="slot-6-7-8-9 uploader">
             <div class="centered" style="width:60%;margin:auto">
+                <div class="success" tal:condition="success">
+                    <div tal:repeat="msg success"><a class="success" tal:attributes="href string:/admin/clean/${msg}.html">Your file</a> has been uploaded.</div>
+                </div>   
                 <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Tip: If you have multiple sheets you can combine scanned in images to a single PDF.</div>
                 <div class="errors" tal:condition="messages" tal:repeat="msg messages">
                     <div tal:repeat="err msg"><span class="error">${err}</span></div>

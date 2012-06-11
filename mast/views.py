@@ -44,7 +44,7 @@ def add_utc():
 def add_geo(request):
     lat = float(request.params['lat']) if 'lat' in request.params else 0
     lon = float(request.params['lon']) if 'lon' in request.params else 0
-    if hasattr(request,'geoip'):
+    if hasattr(request,'geoip') and request.geoip is not None:
         lat = request.geoip['latitiude'] if lat is 0 else lat
         lon = request.geoip['longitutde'] if lon is 0 else lon
     return [lat,lon]
@@ -184,6 +184,7 @@ def view_why(request):
 def upload_form(request):
     resp = create_response(title='Upload Paper Documents')
     resp['messages'] = request.session.pop_flash()
+    resp['success'] = request.session.pop_flash('success')
     return resp
     
 @view_config(route_name='upload', request_method='POST')
@@ -191,10 +192,9 @@ def post_upload(request):
     entry = upload_doc(request)
     if entry['status'] == 'OK':
         em = entry['data']['em'] if 'em' in entry['data'] else ''
-        request.session.flash('pre-applying','src',)
-        request.session.flash(em,'em')
-        return HTTPFound(location='/admin/upload-thanks.html')
-    request.session.flash(entry['msg'])
+        request.session.flash(str(entry['data']['_id']),'success')
+    else:
+        request.session.flash(entry['msg'])
     return HTTPFound(location=request.route_url('upload'))
     
 @view_config(route_name="dashboard", request_method="GET", renderer="templates/dashboard.pt")
