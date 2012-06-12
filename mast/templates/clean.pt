@@ -1,0 +1,38 @@
+<metal:main use-macro="load: admin.pt">
+<div metal:fill-slot="content">
+    <div class="row">
+        <section class="slot-6-7-8">
+            <h2>Clean Up Our Documents</h2>
+        </section>
+    </div>
+    <div class="row clean">
+        <section class="slot-6-7-8-9">
+            <p>Click a document below to view it and enter any legible names. Documents will disappear from this list when you have entered as many names as there are people for that document.</p>
+            <table class="dataview" style="width:90%">
+            <tr class="headrow">
+                <td>Type</td>
+                <td>Uploaded</td>
+                <td>By</td>
+                <td class="numeric">Names</td>
+                <td class="numeric">Cleaned</td>
+            </tr>
+            <tr tal:repeat="d docs">
+                <td><a href="./clean/${d['_id']}.html" tal:content="'Petition' if d['dtype'] == 'pet' else 'Application'"></a></td>
+                <td><time tal:content="d['utc']"></time></td>
+                <td tal:content="d['who']"></td>
+                <td class="numeric" tal:content="d['cnt']">0</td>
+                <td class="numeric" tal:content="len(d['names']) if 'names' in d else 0"></td>
+            </tr>
+            </table>
+        </section>
+    </div>
+    <script>
+    $.each($('time'),function(e) {
+        var t = $(this);
+        var utc = t.html();
+        t.attr({'utc':utc});
+        t.html(moment(utc).fromNow());
+    });
+    </script>
+</div>
+</metal:main>

@@ -521,6 +521,11 @@ header .motto h2 { font-size: 1.05em; padding: 0 0 0 40px; margin: 0;color:#1151
 .dashboard .note { font-size: 14px; }
 #map_canvas { width: 100%; height: 325px; }
 
+.clean .dataview { width: 90%; border-collapse: collapse; }
+.clean .dataview .headrow td { font-weight: bold; color:#777; }
+.clean .dataview .numeric { width: 80px; text-align:right;padding-right:10px; }
+.clean .dataview TD { padding-left: 10px;border-bottom: solid #EEE 1px; }
+
 a.block { 
     display: block;
     background-color: #0b4d8e;

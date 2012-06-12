@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/static/css/986_grid.css" type="text/css" media="screen and (min-width: 986px)">
     <link rel="stylesheet" href="/static/css/1236_grid.css" media="screen and (min-width: 1236px)" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/static/js/moment.js"></script>
     <!--[if lt IE 9]>
     <script src="/static/js/flashcanvas.js"></script>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>

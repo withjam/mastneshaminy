@@ -110,14 +110,14 @@ def my_view(request):
     
 @view_config(route_name='home', renderer='templates/home.pt')
 def web_home(request):
-    resp = create_response('Homepage')
+    resp = create_response('Homepage',desc='Help us bring a MaST Community Charter to the Neshaminy School District',keywords='Neshaminy Charter School,MaST Charter School,Neshaminy Charter Info,Homepage')
     resp['geoip'] = request.geoip
     resp['sigcnt'] = getsigcount(request)
     return resp
     
 @view_config(route_name='petition', renderer='templates/petition.pt', request_method='GET')
 def petition_form(request):
-    resp = create_response('Sign the Petition')
+    resp = create_response('Sign the Petition',desc='Sign the Petition to urge the Neshaminy School Board to approve a MaST Charter School!',keywords='MaST Petition, Neshaminy Charter School Petition,online charter school petition,math science and technology charter,neshaminy math petition')
     resp['messages'] = request.session.pop_flash()
     return resp
     
@@ -153,7 +153,7 @@ def thanks_page(request):
     
 @view_config(route_name='apply', renderer='templates/apply.pt', request_method='GET')
 def apply_form(request):
-    resp = create_response('Pre-Enroll in Neshaminy MaST Charter School')
+    resp = create_response('Pre-Enroll in Neshaminy MaST Charter School',desc='Complete our Pre-Application form to reserve a spot for your children in MaST Neshaminy! No obligation to enroll but it helps us judge interest.',keywords='Neshaminy Charter School Pre-Application,early application form,MaST Neshaminy Enrollment,online enrollment form,charter school enrollment form,charter school pre-application,MaST application,MaST Neshaminy Application')
     resp['messages'] = request.session.pop_flash()
     return resp
     
@@ -170,7 +170,7 @@ def post_apply_form(request):
     
 @view_config(route_name='about', renderer='templates/about.pt')
 def view_about(request):
-    return create_response(title='About the MaST Community Charter System')
+    return create_response(title='About the MaST Community Charter System',desc='Information about the MaST Charter School and what a Neshaminy Charter School would mean to the Neshaminy School District',keywords='About MaST Charter, About MaST Neshaminy,MaST Neshaminy Charter School,Neshaminy MaST Charter School')
     
 @view_config(route_name='privacy', renderer='templates/privacy.pt')
 def view_privacy(request):
@@ -178,7 +178,7 @@ def view_privacy(request):
     
 @view_config(route_name='why', renderer='templates/why.pt')
 def view_why(request):
-    return create_response(title='Why MaST Charter is good for Neshaminy')
+    return create_response(title='Why MaST Charter is good for Neshaminy',desc='A presentation explaining why MaST Community Charter School will provide a great benefit to Neshaminy School Students',keywords='Why a Mast Charter School,Mast charter for neshaminy,why a charter school,why neshaminy')
     
 @view_config(route_name='upload', renderer='templates/uploads.pt', request_method='GET')
 def upload_form(request):
@@ -204,6 +204,16 @@ def view_dashboard(request):
     resp['sig']['locs'] = getsiglocs(request)
     resp['app'] = getappcount(request,True)
     resp['app']['facets'] = getappfacets(request)
+    return resp
+    
+@view_config(route_name="cleanlist", request_method="GET", renderer="templates/clean.pt")
+def view_clean_list(request):
+    resp = create_response(title='Clean Uploaded Documents')
+    resp['docs'] = []
+    # get all the uploads
+    for doc in request.db.uploads.find():
+        if 'names' not in doc or len(doc['names']) < doc['cnt']:
+            resp['docs'].append(prep_mongodoc(doc))
     return resp
     
 doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']

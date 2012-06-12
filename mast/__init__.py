@@ -48,7 +48,8 @@ def main(global_config, **settings):
     # ADMIN Routes
     config.add_route('dashboard','/admin/dashboard.html')
     config.add_route('signatures','/admin/signatures.html')
-    config.add_route('clean','/admin/clean.html')
+    config.add_route('cleanlist','/admin/clean.html')
+    config.add_route('cleandoc','/admin/clean/{eid}.html')
     config.add_route('upload','/admin/upload.html')
     # API Routes
     config.add_route('emailShare','/json/share')
