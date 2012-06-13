@@ -3,6 +3,7 @@ from pyramid.view import view_config
 from pyramid.response import Response
 from pyramid.httpexceptions import HTTPFound
 from utils import read_sign
+from utils import read_upload_file
 from utils import sig2b64
 from utils import get_sign_path
 from utils import get_upload_path
@@ -11,6 +12,7 @@ from email.mime.text import MIMEText
 import mimetypes
 import logging
 from bson.code import Code
+from bson.objectid import ObjectId
 log = logging.getLogger(__name__)
 
 def init_mimetypes(mimetypes):
@@ -140,6 +142,15 @@ def view_signature(request):
                         body=sign)
     return file_response
     
+@view_config(route_name='viewupload', request_method='GET')
+def view_uploaded_file(request):
+    eid = request.matchdict['filename']
+    ext = request.matchdict['ext']
+    ufile = read_upload_file(eid+'.'+ext)
+    file_response = Response(content_type=ent['mtype'],
+                        body=ufile)
+    return file_response
+    
 @view_config(route_name='thanks', request_method='GET',renderer='templates/thanks.pt')
 def thanks_page(request):
     fl = request.session.pop_flash('src')
@@ -216,6 +227,14 @@ def view_clean_list(request):
             resp['docs'].append(prep_mongodoc(doc))
     return resp
     
+@view_config(route_name="cleandoc", request_method="GET", renderer="templates/cleandoc.pt")
+def clean_doc_form(request):
+    doc = request.db.uploads.find_one({'_id':ObjectId(request.matchdict['eid'])})
+    resp = create_response(title='Enter Document Names')
+    resp['id'] = request.matchdict['eid']
+    resp['doc'] = doc
+    return resp
+    
 doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 """ API Handlers """
 def upload_doc(request):
@@ -234,9 +253,13 @@ def upload_doc(request):
             errors.append('File is not a valid format.  Please upload .zip, .pdf, or .doc files.')
     if len(errors):
         return json_error(errors)
+    ext = mimetypes.guess_extension(mtype[0])
     entry = {
         'who': request.params['name'],
         'dtype': request.params['dtype'],
+        'mtype': mtype[0],
+        'menc': mtype[1],
+        'ext': ext,
         'cnt': int(request.params['count']) if 'count' in request.params else 1,
         'utc': add_utc(),
         'geo': add_geo(request)
@@ -244,7 +267,7 @@ def upload_doc(request):
     request.db.uploads.insert(entry)
     # write it out to a file as backup
     input_file = request.POST['docfile'].file
-    fpath = get_upload_path(str(entry['_id']),mimetypes.guess_extension(mtype[0]))
+    fpath = get_upload_path(str(entry['_id']),ext)
     output_file = open(fpath, 'wb')
 
     # Finally write the data to the output file

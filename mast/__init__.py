@@ -40,6 +40,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('petition', '/petition.html')
     config.add_route('viewsign', '/signature/{filename}.png')
+    config.add_route('viewupload','/upload/{filename}.{ext}')
     config.add_route('apply', '/apply.html')
     config.add_route('thanks', '/thanks.html')
     config.add_route('about', '/about.html')

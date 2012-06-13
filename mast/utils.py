@@ -20,6 +20,12 @@ def read_sign(name):
     sign = open(os.path.join(
              _here, 'signatures', name+'.png')).read()
     return sign
+    
+#name includes extension for uploads
+def read_upload_file(name):
+    ufile = open(os.path.join(
+             _here, 'uploads', name)).read()
+    return ufile
 
 def pencrypt(pwd):
     salt = ''.join(random.choice('bcdefghijklmnopqrstvwxyz0123456789') for i in range(6))
