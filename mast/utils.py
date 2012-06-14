@@ -22,9 +22,8 @@ def read_sign(name):
     return sign
     
 #name includes extension for uploads
-def read_upload_file(name):
-    ufile = open(os.path.join(
-             _here, 'uploads', name)).read()
+def read_upload_file(name,ext):
+    ufile = open(get_upload_path(name,ext)).read()
     return ufile
 
 def pencrypt(pwd):

@@ -148,7 +148,7 @@ def view_uploaded_file(request):
     ext = request.matchdict['ext']
     fname = eid+'.'+ext
     log.info('got request for upload '+eid+' extension: '+ext)
-    ufile = read_upload_file(fname)
+    ufile = read_upload_file(eid,'.'+ext)
     mtype = mimetypes.guess_type(fname)
     file_response = Response(content_type=mtype[0],
                         body=ufile)
