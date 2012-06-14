@@ -146,8 +146,11 @@ def view_signature(request):
 def view_uploaded_file(request):
     eid = request.matchdict['filename']
     ext = request.matchdict['ext']
-    ufile = read_upload_file(eid+'.'+ext)
-    file_response = Response(content_type=ent['mtype'],
+    fname = eid+'.'+ext
+    log.info('got request for upload '+eid+' extension: '+ext)
+    ufile = read_upload_file(fname)
+    mtype = mimetypes.guess_type(fname)
+    file_response = Response(content_type=mtype[0],
                         body=ufile)
     return file_response
     
@@ -229,9 +232,11 @@ def view_clean_list(request):
     
 @view_config(route_name="cleandoc", request_method="GET", renderer="templates/cleandoc.pt")
 def clean_doc_form(request):
-    doc = request.db.uploads.find_one({'_id':ObjectId(request.matchdict['eid'])})
+    eid = request.matchdict['eid']
+    log.info('doc form eid '+eid)
+    doc = request.db.uploads.find_one({'_id':ObjectId(eid)})
     resp = create_response(title='Enter Document Names')
-    resp['id'] = request.matchdict['eid']
+    resp['id'] = eid
     resp['doc'] = doc
     return resp
     

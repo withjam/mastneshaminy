@@ -11,8 +11,8 @@
         </section>
         <section class="slot-8-9">
             <?python
-                preview_url = '/upload/view/'+str(doc['_id'])+'.'
-                preview_url += doc['ext'] if 'ext' in doc else 'png'
+                preview_url = '/upload/view/'+str(doc['_id'])
+                preview_url += doc['ext'] if 'ext' in doc else '.png'
             ?>
             <p>Document Preview <em class="note">if you don't see a preview below then <a href="${preview_url if preview_url is not None else '/static/images/blank.gif'}" target="previewdoc">click here</a></em></p>
             <div class="preview" style="border:solid #999 1px;"><img src="${preview_url if preview_url is not None else 'blank.gif'}"/></div>
