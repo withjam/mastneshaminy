@@ -13,7 +13,7 @@
                 <div class="success" tal:condition="success">
                     <div tal:repeat="msg success"><a class="success" tal:attributes="href string:/admin/clean/${msg}.html">Your file</a> has been uploaded.</div>
                 </div>   
-                <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.  Tip: If you have multiple sheets you can combine scanned in images to a single PDF.</div>
+                <div class="statement">You can upload scanned in forms that you have used to collect signatures and pre-applications. Please provide your name and the total number of signatures in petitions for better record-keeping.</div>
                 <div class="errors" tal:condition="messages" tal:repeat="msg messages">
                     <div tal:repeat="err msg"><span class="error">${err}</span></div>
                 </div>                    
@@ -33,7 +33,7 @@
                     <input type="text" name="count" class="number" value="1"/>
                 </div>
                 <div class="field">
-                    <label class="label" for="upfile">File (pdf, doc, jpg, or png file)</label>
+                    <label class="label" for="upfile">File (jpg, gif, or png file)</label>
                     <input type="file" name="docfile" id="upfile" class="file"/>
                 </div>
                 <div class="buttons">

@@ -240,7 +240,7 @@ def clean_doc_form(request):
     resp['doc'] = doc
     return resp
     
-doctypes = ['image/png','image/jpeg','application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+doctypes = ['image/png','image/jpeg','image/gif']
 """ API Handlers """
 def upload_doc(request):
     errors = []
@@ -255,7 +255,7 @@ def upload_doc(request):
         fname = request.params['docfile'].filename
         mtype = mimetypes.guess_type(fname)
         if mtype[0] not in doctypes:
-            errors.append('File is not a valid format.  Please upload .zip, .pdf, or .doc files.')
+            errors.append('File is not a valid format.  Please upload an image file.')
     if len(errors):
         return json_error(errors)
     ext = mimetypes.guess_extension(mtype[0])
