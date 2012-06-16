@@ -225,7 +225,7 @@ def view_clean_list(request):
     resp = create_response(title='Clean Uploaded Documents')
     resp['docs'] = []
     # get all the uploads
-    for doc in request.db.uploads.find():
+    for doc in request.db.uploads.find({'dtype':'pet'}).sort('utc',1):
         if 'names' not in doc or len(doc['names']) < doc['cnt']:
             resp['docs'].append(prep_mongodoc(doc))
     return resp
