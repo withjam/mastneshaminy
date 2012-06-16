@@ -238,7 +238,26 @@ def clean_doc_form(request):
     resp = create_response(title='Enter Document Names')
     resp['id'] = eid
     resp['doc'] = doc
+    resp['messages'] = request.session.pop_flash()
     return resp
+    
+@view_config(route_name="cleandoc", request_method="POST")
+def post_doc_form(request):
+    eid = request.matchdict['eid']
+    log.info('cleaning doc id '+eid)
+    doc = request.db.uploads.find_one({'_id':ObjectId(eid)})
+    names = doc['names'] if 'names' in doc else []
+    for i in range(doc['cnt']):
+        istr = str(i)
+        n = request.params['name'+istr] if not missingparam('name'+istr,request) else None
+        c = request.params['contact'+istr] if not missingparam('contact'+istr,request) else None
+        a = request.params['addr'+istr] if not missingparam('addr'+istr,request) else None
+        if (n is not None and c is not None and a is not None):
+            names.append({'n':n,'c':c,'a':a})
+    doc['names'] = names
+    request.db.uploads.save(doc)
+    request.session.flash('Document was updated')
+    return HTTPFound(location=request.route_url('cleanlist'))
     
 doctypes = ['image/png','image/jpeg','image/gif']
 """ API Handlers """
