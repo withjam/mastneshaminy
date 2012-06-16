@@ -7,7 +7,31 @@
     </div>
     <div class="row dashboard">
         <section class="slot-6-7">
-            <h3>${doc['dtype']}</h3>
+            <div tal:condition="doc['dtype'] == 'pet'">
+            <form action="#" method="POST">
+                <h3>Transcribe ${doc['cnt']} ${'Petition Signature' if doc['dtype'] == 'pet' else 'Applicant Name'}${'s' if doc['cnt'] > 1 else ''}</h3>
+                <p class="note" style="padding-bottom:1.1em">Using the document view on the right, try to enter the information on the form that you can read as best you can.  Hitting "Save" will update this record.  "Cancel" will discard any unsaved changes.  You do not have to enter every name in order to save.</p>
+                <table class="entrygrid" width="100%">
+                <tr>
+                    <td class="name">Full Name</td>
+                    <td class="addr">Address</td>
+                    <td class="contact">Contact Info</td>
+                </tr>
+                <tr tal:repeat="ind python:range(doc['cnt'])">
+                    <td class="name"><input type="text" value=""/></td>
+                    <td class="name"><input type="text" value=""/></td>
+                    <td class="name"><input type="text" value=""/></td>
+                </tr>
+                </table>
+                <div class="buttons">
+                    <button class="submit" submit="true">Submit</button>
+                    <a class="cancel" href="/admin/clean.html">Cancel</a>
+                </div>
+            </form>
+            </div>
+            <div tal:condition="doc['dtype'] == 'app'">
+            <p>This is for review only.  No action is required for pre-application forms.</p>
+            </div>
         </section>
         <section class="slot-8-9">
             <?python

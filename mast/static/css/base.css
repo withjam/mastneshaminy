@@ -583,7 +583,9 @@ footer .subtle { color: #888; display: block; padding-top: 0.55em;}
 .field .label { width: 50%; display: block; padding: 1.1em 0 0.05em; }
 .field.first .label { padding-top: 0; }
 .field input { width: 80%; font-size: 1.1em; }
-.buttons .submit { float:none; clear:both; display:block; margin-top: 2em;padding: 0.9em 1.5em; font-size:0.95em; background-color: #FFF333; color: #333; border:solid 1px #999000;border-radius: 8px; }
+.buttons a.cancel { float: left; margin-right: 1.20em;margin-top: 2em; background-color: #CCC; color: #444; border-radius: 8px; padding: 0.35em 1.5em; cursor:pointer; font-weight:normal; font-size:0.95em; border: solid 1px #999;text-decoration:none;}
+.buttons .submit { float:none; display:block; clear:both;margin-top: 2em;padding: 0.9em 1.5em; font-size:0.95em; background-color: #FFF333; color: #333; border:solid 1px #999000;border-radius: 8px; }
+.wrapper-admin .buttons .submit { display:inline; }
 
 .inputgrid input { font-size: 0.65em; }
 
