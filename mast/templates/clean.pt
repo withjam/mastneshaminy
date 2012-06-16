@@ -7,6 +7,9 @@
     </div>
     <div class="row clean">
         <section class="slot-6-7-8-9">
+            <div class="success" tal:condition="success">
+                <div tal:repeat="msg success">${msg}</div>
+            </div>
             <p>Click a document below to view it and enter any legible names. Documents will disappear from this list when you have entered as many names as there are people for that document.</p>
             <table class="dataview" style="width:90%">
             <tr class="headrow">

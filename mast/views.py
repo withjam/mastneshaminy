@@ -228,6 +228,7 @@ def view_clean_list(request):
     for doc in request.db.uploads.find({'dtype':'pet'}).sort('utc',1):
         if 'names' not in doc or len(doc['names']) < doc['cnt']:
             resp['docs'].append(prep_mongodoc(doc))
+    resp['success'] = request.session.pop_flash('success')
     return resp
     
 @view_config(route_name="cleandoc", request_method="GET", renderer="templates/cleandoc.pt")
@@ -238,7 +239,6 @@ def clean_doc_form(request):
     resp = create_response(title='Enter Document Names')
     resp['id'] = eid
     resp['doc'] = doc
-    resp['messages'] = request.session.pop_flash()
     return resp
     
 @view_config(route_name="cleandoc", request_method="POST")
@@ -246,7 +246,7 @@ def post_doc_form(request):
     eid = request.matchdict['eid']
     log.info('cleaning doc id '+eid)
     doc = request.db.uploads.find_one({'_id':ObjectId(eid)})
-    names = doc['names'] if 'names' in doc else []
+    names = []
     for i in range(doc['cnt']):
         istr = str(i)
         n = request.params['name'+istr] if not missingparam('name'+istr,request) else None
@@ -256,7 +256,7 @@ def post_doc_form(request):
             names.append({'n':n,'c':c,'a':a})
     doc['names'] = names
     request.db.uploads.save(doc)
-    request.session.flash('Document was updated')
+    request.session.flash('Document was updated','success')
     return HTTPFound(location=request.route_url('cleanlist'))
     
 doctypes = ['image/png','image/jpeg','image/gif']
