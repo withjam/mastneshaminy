@@ -15,7 +15,8 @@
                 <tr>
                     <td class="name">Full Name</td>
                     <td class="addr">Address</td>
-                    <td class="contact">Contact Info</td>
+                    <td class="contact">Email</td>
+                    <td class="contact">Phone</td>
                 </tr>
                 <?python 
                     docnames = doc['names'] if 'names' in doc else [] 
@@ -24,7 +25,8 @@
                 <tr tal:repeat="ind python:range(doc['cnt'])">
                     <td class="name"><input type="text" name="name${ind}" value="${docnames[ind]['n'] if dnlen > ind else ''}"/></td>
                     <td class="name"><input type="text" name="addr${ind}" value="${docnames[ind]['a'] if dnlen > ind else ''}"/></td>
-
+                    <td class="name"><input type="text" name="phone${ind}" value="${docnames[ind]['ph'] if dnlen > ind else ''}"/></td>
+                    <td class="name"><input type="text" name="email${ind}" value="${docnames[ind]['em'] if dnlen > ind else ''}"/></td>
                 </tr>
                 </table>
                 <div class="buttons">

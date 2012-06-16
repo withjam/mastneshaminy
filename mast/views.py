@@ -250,9 +250,9 @@ def post_doc_form(request):
     for i in range(doc['cnt']):
         istr = str(i)
         n = request.params['name'+istr] if not missingparam('name'+istr,request) else None
-        a = request.params['a'+istr] if not missingparam('a'+istr,request) else None
-        ph = request.params['ph'+istr] if not missingparam('ph'+istr,request) else None
-        em = request.params['em'+istr] if not missingparam('em'+istr,request) else None
+        a = request.params['addr'+istr] if not missingparam('addr'+istr,request) else None
+        ph = request.params['phone'+istr] if not missingparam('phone'+istr,request) else None
+        em = request.params['email'+istr] if not missingparam('email'+istr,request) else None
         if  (n is not None or a is not None or ph is not None or em is not None):
             names.append({'n':n,'a':a,'ph':ph,'em':em})
     doc['names'] = names
