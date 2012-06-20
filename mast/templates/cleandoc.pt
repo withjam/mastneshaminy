@@ -45,8 +45,31 @@
                 preview_url += doc['ext'] if 'ext' in doc else '.jpeg'
             ?>
             <p>Document Preview <em class="note">if you don't see a preview below then <a href="${preview_url if preview_url is not None else '/static/images/blank.gif'}" target="previewdoc">click here</a></em></p>
-            <div class="preview" style="border:solid #999 1px;"><img src="${preview_url if preview_url is not None else 'blank.gif'}"/></div>
+            <div class="toolbar"><a class="lrotate" title="Rotate Left"></a><a class="rrotate" title="Rotate Right"></a><a title="Change Zoom" class="zoom">50%</a><a title="Move Image" class="move"></a></div>
+            <div class="preview" style="border:solid #999 1px;height:550px;width:100%;overflow:hidden"><canvas id="previewCanvas"></canvas></div>
         </section>
     </div>
+    <script>
+    jQuery(function($) {
+        var canvas = document.getElementById('previewCanvas');
+        var ctx = canvas.getContext('2d');
+        // load image from data url
+        var imageObj = new Image();
+        imageObj.onload = function(){
+            canvas.width = this.width;
+            canvas.height = this.height;
+            ctx.scale(1.25,1.25);
+            //ctx.drawImage(this,0,0);
+            var w2 = this.width / 2;
+            var h2 = this.height / 2;
+            ctx.translate(h2,w2);
+            //ctx.translate(w2,h2);
+            ctx.rotate(1.58);
+            ctx.drawImage(this, -w2, -h2);
+        };
+     
+        imageObj.src = '${preview_url if preview_url is not None else 'blank.gif'}';
+    });
+    </script>
 </div>
 </metal:main>
