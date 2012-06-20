@@ -55,17 +55,81 @@
         var ctx = canvas.getContext('2d');
         // load image from data url
         var imageObj = new Image();
+        var imgw = 0;
+        var imgh = 0;
+        var scale = 0.5;
+        var rotation = 0;
+        var offW = 0;
+        var offH = 0;
         imageObj.onload = function(){
-            canvas.width = this.width;
-            canvas.height = this.height;
-            ctx.scale(1.25,1.25);
-            //ctx.drawImage(this,0,0);
-            var w2 = this.width / 2;
-            var h2 = this.height / 2;
-            ctx.translate(h2,w2);
-            //ctx.translate(w2,h2);
-            ctx.rotate(1.58);
-            ctx.drawImage(this, -w2, -h2);
+            var tools = $('.toolbar');
+            tools.children('a.lrotate').click(function(e) {
+                rotate(true);
+            });
+            tools.children('a.rrotate').click(function(e) {
+                rotate();
+            });
+            tools.children('a.zoom').click(function(e) {
+                zoom(0.5);
+            });
+            drawMe();
+        };
+        
+        // One degree in radians
+var TO_RADIANS = Math.PI / 180;
+ 
+// One radian in degrees
+var TO_DEGREES = 180 / Math.PI;
+
+        var radians = function(deg) {
+            return deg * TO_RADIANS;
+        }
+        
+        var zoom = function(amt) {
+            window.console.log('zooming to '+amt);
+            scale += amt;
+            drawMe();
+        }
+        
+        var rotate = function(left) {
+            var amt = left ? -90 : 90;
+            rotation += amt;
+            if (rotation === 360) rotation = 0;
+            else if (rotation < 0) rotation = 360 + rotation;
+            drawMe();
+        }
+        
+        var drawMe = function() {
+            var cw = imageObj.width;
+            var ch = imageObj.height;
+            var cy = 0;
+            var cx = 0;
+            if (rotation) {
+                switch (rotation) {
+                     case 90:
+                          cw = imageObj.height;
+                          ch = imageObj.width;
+                          cy = imageObj.height * (-1);
+                          break;
+                     case 180:
+                          cx = imageObj.width * (-1);
+                          cy = imageObj.height * (-1);
+                          break;
+                     case 270:
+                          cw = imageObj.height;
+                          ch = imageObj.width;
+                          cx = imageObj.width * (-1);
+                          break;
+                }
+            }
+            canvas.width = cw;
+            canvas.height = ch;
+            ctx.rotate(radians(rotation));
+            ctx.scale(scale,scale);
+            window.console.log('zoom: '+scale);
+            window.console.log('rotation: '+rotation);
+            window.console.log('cx: '+cx+', offH: '+cy);
+            ctx.drawImage(imageObj, cx, cy);
         };
      
         imageObj.src = '${preview_url if preview_url is not None else 'blank.gif'}';
