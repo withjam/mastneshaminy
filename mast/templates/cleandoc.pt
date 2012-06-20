@@ -45,13 +45,21 @@
                 preview_url += doc['ext'] if 'ext' in doc else '.jpeg'
             ?>
             <p>Document Preview <em class="note">if you don't see a preview below then <a href="${preview_url if preview_url is not None else '/static/images/blank.gif'}" target="previewdoc">click here</a></em></p>
-            <div class="toolbar"><a class="lrotate" title="Rotate Left"></a><a class="rrotate" title="Rotate Right"></a><a title="Change Zoom" class="zoom">50%</a><a title="Move Image" class="move"></a></div>
-            <div class="preview" style="border:solid #999 1px;height:550px;width:100%;overflow:hidden"><canvas id="previewCanvas"></canvas></div>
+            <div class="toolbar"><a class="lrotate" title="Rotate Left"></a><a class="rrotate" title="Rotate Right"></a><a title="Zoom In" class="zoomin"></a><a title="Zoom Out" class="zoomout"></a><a class="zoomlevel">50%</a><a class="resetview">reset image</a></div>
+            <div class="preview" style="position:relative;border:solid #999 1px;height:550px;width:585px;overflow:hidden"><canvas id="previewCanvas" style="position:absolute;top:0;left:0"></canvas></div>
+            <div class="note" style="text-align:center;font-style:italic;width:425px;">Click and drag image to move</div>
         </section>
     </div>
     <script>
     jQuery(function($) {
+        // One degree in radians
+        var TO_RADIANS = Math.PI / 180;
+         
+        // One radian in degrees
+        var TO_DEGREES = 180 / Math.PI;
+        var zoomlabel = $('.zoomlevel');
         var canvas = document.getElementById('previewCanvas');
+        var canvasObj = $('#previewCanvas');
         var ctx = canvas.getContext('2d');
         // load image from data url
         var imageObj = new Image();
@@ -69,25 +77,46 @@
             tools.children('a.rrotate').click(function(e) {
                 rotate();
             });
-            tools.children('a.zoom').click(function(e) {
-                zoom(0.5);
+            tools.children('a.zoomin').click(function(e) {
+                zoom(0.25);
+            });
+            tools.children('a.zoomout').click(function(e) {
+                zoom(-0.25);
+            });
+            tools.children('a.resetview').click(resetview);
+            canvasObj.bind('mousedown',function(event) {
+                canvasObj.attr({'moving':'true','lastx':event.pageX,'lasty':event.pageY});
+                window.console.log('lastx: '+event.pageX+', lasty: '+event.pageY);
+                $(window).one('mouseup',function() { canvasObj.removeAttr('moving'); });
+            }).bind('mousemove',function(event) {
+                if (canvasObj.attr('moving') === 'true') {
+                    var x = event.pageX;
+                    var y = event.pageY;
+                    var xdiff = parseInt(canvasObj.attr('lastx')||0) - x;
+                    var ydiff = parseInt(canvasObj.attr('lasty')||0) - y;
+                    var pos = canvasObj.position();
+                    canvasObj.css({'left':pos.left - xdiff,'top': pos.top - ydiff});
+                    canvasObj.attr({'lastx':x,'lasty':y});
+                }
             });
             drawMe();
         };
-        
-        // One degree in radians
-var TO_RADIANS = Math.PI / 180;
- 
-// One radian in degrees
-var TO_DEGREES = 180 / Math.PI;
 
         var radians = function(deg) {
             return deg * TO_RADIANS;
         }
         
+        var resetview = function() {
+            scale = 0.5;
+            rotation = 0;
+            canvasObj.css({'left':0,'top':0});
+            drawMe();
+        }
+        
         var zoom = function(amt) {
             window.console.log('zooming to '+amt);
             scale += amt;
+            if (scale <= 0.5) scale = 0.5;
             drawMe();
         }
         
@@ -122,10 +151,13 @@ var TO_DEGREES = 180 / Math.PI;
                           break;
                 }
             }
+            cw *= scale;
+            ch *= scale;
             canvas.width = cw;
             canvas.height = ch;
             ctx.rotate(radians(rotation));
             ctx.scale(scale,scale);
+            zoomlabel.html(scale*100+'%');
             window.console.log('zoom: '+scale);
             window.console.log('rotation: '+rotation);
             window.console.log('cx: '+cx+', offH: '+cy);

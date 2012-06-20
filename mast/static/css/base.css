@@ -589,12 +589,14 @@ footer .subtle { color: #888; display: block; padding-top: 0.55em;}
 
 .inputgrid input { font-size: 0.65em; }
 
-.toolbar { background:url('../images/image_toolbar.png') no-repeat 20px 10px; width: 240px; height:24px;padding:0.65em 20px;position:relative; }
+.toolbar { background:url('../images/image_toolbar.png') no-repeat 20px 10px; width:375px; height:24px;padding:0.65em 20px;position:relative; }
 .toolbar a { display: block;position:absolute;height:30px; cursor:pointer;}
 .toolbar a.lrotate { width: 30px; left: 16px;top: 5px; }
 .toolbar a.rrotate { width: 30px; left: 55px;top: 5px; }
-.toolbar a.zoom { width: 70px; left: 114px;top: 5px;text-align:left; padding-left:40px;color: #000; font-weight: normal; }
-.toolbar a.move { width: 30px; left: 224px;top: 5px; }
+.toolbar a.zoomin { width: 35px; left: 114px;top: 5px;}
+.toolbar a.zoomout { width: 35px; left: 154px;top: 5px;}
+.toolbar a.zoomlevel { text-decoration:none; width: 30px; left: 198px; color: #000; font-weight: normal;  }
+.toolbar a.resetview { text-decoration:underline; font-size:12px; right: 5px;font-family:arial; font-weight: normal;  }
 
 .modalwin .mbox { background-color:#FFF;border-radius:10px;padding:2em;}
 .modalwin .heading { font-weight: bold; }
