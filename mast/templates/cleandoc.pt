@@ -116,7 +116,7 @@
         var zoom = function(amt) {
             window.console.log('zooming to '+amt);
             scale += amt;
-            if (scale <= 0.5) scale = 0.5;
+            if (scale <= 0.25) scale = 0.25;
             drawMe();
         }
         
