@@ -260,7 +260,7 @@ def post_doc_form(request):
     request.session.flash('Document was updated','success')
     return HTTPFound(location=request.route_url('cleanlist'))
     
-doctypes = ['image/png','image/jpeg','image/gif']
+doctypes = ['image/png','image/jpeg','image/gif','application/pdf']
 """ API Handlers """
 def upload_doc(request):
     errors = []
