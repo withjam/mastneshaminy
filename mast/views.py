@@ -47,8 +47,8 @@ def add_geo(request):
     lat = float(request.params['lat']) if 'lat' in request.params else 0
     lon = float(request.params['lon']) if 'lon' in request.params else 0
     if hasattr(request,'geoip') and request.geoip is not None:
-        lat = request.geoip['latitiude'] if lat is 0 else lat
-        lon = request.geoip['longitutde'] if lon is 0 else lon
+        lat = request.geoip['latitude'] if lat is 0 else lat
+        lon = request.geoip['longitude'] if lon is 0 else lon
     return [lat,lon]
     
 mapCnt = Code('function() { emit(this.dtype,this.cnt || 0) }')
